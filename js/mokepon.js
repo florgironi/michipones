@@ -6,7 +6,7 @@ const botonFuego = document.getElementById("boton-fuego");
 const botonTierra = document.getElementById("boton-tierra");
 const botonReiniciar = document.getElementById("boton-reinicio")
 
-// Comentario de prueba, modificado 
+
 const sectionSeleccionarMascota = document.getElementById ("Seleccionar-mascota")
 
 const spanMascotaJugador = document.getElementById("mascota-jugador");
