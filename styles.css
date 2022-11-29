@@ -1,0 +1,234 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+Pro&display=swap');
+
+body{
+    font-family: 'Source Serif Pro', serif;
+    background-image:linear-gradient(rgba(40, 40, 40, 0.8), #efababcc) ,url("./asses/fondo8.jpg");
+    min-height: 100vh;
+}
+
+/* ==============   TITULOS   =================== */
+.title {
+    color: hwb(0 98% 1%);
+    font-size: 100px;
+    text-align: center;
+    margin: 30px;
+}
+.subtitulo{
+    color: hsl(0, 100%, 97%);
+    font-size: 50px;
+    margin-top: 0;
+
+}
+/* ===============   MASCOTAS ===================== */
+
+.envoltorio-mascotas{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.cajaMascota{
+    background-color: #9E7676;
+    height: 357px;
+    width: 248px;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    font-size: 25px;
+}
+
+.cajaMascota:hover{
+    background-color: hsl(0, 13%, 34%);
+    color:#FFFF;
+    cursor: pointer;
+
+}
+
+.cajaMascota img{
+    width: 114px;
+    height: 214px;
+}
+
+.tarjetas{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+}
+
+input{
+    display: none;
+}
+input:checked+label {
+    background-color: hsl(0, 13%, 34%);
+    color:#FFFF;
+}
+
+/* ================== boton seleccionar =========== */
+
+.boton-seleccionar{
+    background-color: hwb(0 77% 16%);
+    border-radius: 25px;
+    height: 85px;
+    width: 205px;
+    font-size: 20px;
+    margin-top: 40px;
+}
+.boton-seleccionar:hover {
+    background-color: hsl(0, 13%, 34%);
+    color:#FFFF;
+    cursor: pointer;
+}
+
+/* -----------------------------   SEGUNDA PANTALLA    ----------------------- */
+
+.segunda-pantalla{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+}
+.envoltorio-ataque{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.envoltorio-botones{
+    display: flex;
+}
+.boton-fuego,.boton-agua, .boton-tierra{
+    height: 111px;
+    border-radius: 20px;
+    width: 228px;
+    margin: 20px;
+    font-size: 30px;
+}
+.boton-fuego{
+    background: linear-gradient(#fbdadacc, hsla(0, 90%, 69%, 0.8));
+}
+.boton-agua{
+    background: linear-gradient(hwb(225 80% 4% / 0.8), hwb(218 39% 11% / 0.8));;
+}
+.boton-tierra{
+    background: linear-gradient(#f3cdb4cc, hsla(87, 89%, 64%, 0.569));
+}
+
+/* ======================  Mascotas de segunda pantalla ========================== */
+
+.envoltorio-tarjetas-mascotas{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.envoltorio-mensaje-reinicio{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(hsla(0, 0%, 0%, 0.20), hsla(0, 0%, 0%, 0.20));
+    border-radius: 20px;
+    font-size: 30px;
+    height: 127px;
+    width: 476px;
+    flex-direction: column;
+    color: #FFFF;
+
+}
+
+.boton-reinicio{
+    border: none;
+    font-size: 30px;
+    background: linear-gradient(hsla(0, 0%, 0%, 0%), hsla(0, 0%, 0%, 0%));
+    color: hsl(0, 0%, 100%);
+    cursor: pointer;
+}
+
+
+.envoltorio-mascota-jugador, .envoltorio-mascota-enemigo{
+    height: 400px;
+    width: 270px;
+    font-size: 30px;
+    margin: 31px;
+}
+
+#resultado{
+    margin: 0px;
+}
+
+.versus{
+    font-size: 50px;
+}
+#mascota-jugador, #mascota-enemigo{
+    display: block;
+}
+
+.mascota-jugador, .mascota-enemigo{
+    border: solid 5px;
+    border-radius: 20px;
+    height: 317px;
+    background-color: hsl(0, 27%, 68%);
+    padding: 20px;
+}
+
+
+
+/* -------------------- RESPONSIVE ----------------------- */
+@media(max-width:420px){
+    .cajaMascota{
+    height: 190px;
+    width: 148px;
+    font-size: 14px;
+    grid-template-columns: 1fr 1fr;
+    }
+    .tarjetas{
+    grid-template-columns: 1fr 1fr;
+    }
+    .cajaMascota img{
+    width: 66px;
+    height: 129px;
+    }
+    .title{
+    font-size: 62px;
+    margin: 8px;
+    }
+    .subtitulo{
+    font-size: 25px;
+    margin-bottom: 5px; ;
+    }
+    .boton-seleccionar{
+    height: 49px;
+    margin-top: 15px;
+    }
+    .nombre-mascota{
+    margin: 5px;
+    text-align: center;
+    }
+    .envoltorio-botones{
+    flex-direction:column;
+    align-items: center;
+    }
+    .boton-agua, .boton-fuego, .boton-tierra{
+    margin: 5px;
+    height: 66px;
+    font-size: 26px;
+    }
+    
+    .envoltorio-mascota-enemigo,.envoltorio-mascota-jugador{
+    height: 200px;
+    width: 150px;
+    font-size: 23px;
+    margin: 10px;
+    }
+    .versus{
+    display: none;
+    }
+    .mascota-enemigo,.mascota-jugador{
+    height: 100px;
+    }
+    
+}

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Michipones!</title>
+	<link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+		<section id="Seleccionar-mascota" class="envoltorio-mascotas">
+			<h1 id="title" class="title">Michipones</h1>
+
+			<h2 class="subtitulo">Elige tu mascota: </h2>
+
+			<div  id='contenedor-tarjetas' class="tarjetas">
+				
+			</div>
+			<Button id="boton-mascotas" class="boton-seleccionar"> A Jugar </Button>
+		</section>
+
+		<div class="segunda-pantalla">
+			<section id="Seleccionar-ataque">
+				<h1 id="title" class="title">Michipones</h1>
+
+			<div class="envoltorio-ataque">
+					<h2 class="subtitulo">Elige tu ataque:</h2>
+
+					<div class="envoltorio-botones">
+							<button id="boton-fuego" class="boton-fuego "> Fuego 🔥 </button>
+							<button id="boton-agua" class="boton-agua"> Agua 💧 </button>
+							<button id="boton-tierra" class="boton-tierra"> Tierra 🌱 </button>
+					</div>
+
+					<div class="envoltorio-mensaje-reinicio">
+						<p id="resultado">Mucha suerte!</p>
+						<section id="reinicio">
+							<button id="boton-reinicio" class="boton-reinicio"> Reiniciar </button>
+						</section>
+					</div>
+			</div>
+
+			<div class="envoltorio-tarjetas-mascotas">
+						<div class="envoltorio-mascota-jugador">
+							<p class="mascota-jugador">
+								<span id="vidasJugador" class="vidas">3 </span> ❤️
+								<span id="mascota-jugador"></span>
+							<div id="ataque-jugador"></div>
+						</div>
+
+						<div class="versus">Vs.</div>
+
+						<div class="envoltorio-mascota-enemigo">
+							<p class="mascota-enemigo">
+								<span id="vidasEnemigo" class="vidas">3 </span> ❤️
+								<span id="mascota-enemigo"></span>
+							<div id="ataque-enemigo"></div>
+						</div>	
+			</div>
+		</div>
+
+	<script src="./js/mokepon.js"></script>
+
+</body>
+
+</html>
