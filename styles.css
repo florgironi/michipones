@@ -98,9 +98,8 @@ input:checked+label {
     flex-direction: column;
     align-items: center;
 }
-.envoltorio-botones{
-    display: flex;
-}
+
+
 .boton-fuego,.boton-agua, .boton-tierra{
     height: 111px;
     border-radius: 20px;
@@ -108,14 +107,12 @@ input:checked+label {
     margin: 20px;
     font-size: 30px;
 }
-.boton-fuego{
-    background: linear-gradient(#fbdadacc, hsla(0, 90%, 69%, 0.8));
-}
-.boton-agua{
-    background: linear-gradient(hwb(225 80% 4% / 0.8), hwb(218 39% 11% / 0.8));;
-}
-.boton-tierra{
-    background: linear-gradient(#f3cdb4cc, hsla(87, 89%, 64%, 0.569));
+.boton-de-ataque{
+    height: 57px;
+    border-radius: 20px;
+    width: 60px;
+    margin: 7px;
+    font-size: 30px;
 }
 
 /* ======================  Mascotas de segunda pantalla ========================== */
