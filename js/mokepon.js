@@ -36,6 +36,8 @@ let inputAmigodelhombre;
 let inputTiguronsin;
 let inputArdillita;
 let mascotaJugador;
+let indexAtaqueJugador
+let indexAtaqueEnemigo;
 let botonAgua 
 let botonFuego
 let botonTierra 
@@ -247,8 +249,47 @@ function funcionAtaqueEnemigo() {
     ataqueEnemigo.push('TIERRA') 
   }
   console.log('arrayEnemigo:', ataqueEnemigo)
-  combate()
+  iniciarCombate()
 }
+
+function iniciarCombate(){
+  if(ataqueJugador.length===5){
+    combate()
+  }
+}
+function indexAmbosOponentes(jugador,enemigo){
+  indexAtaqueEnemigo = ataqueJugador[jugador]
+  indexAtaqueEnemigo = ataqueEnemigo[enemigo]
+}
+
+function combate() {
+  // Recorre el array de la cantidad de ataques tanto del jugador como del enemigo, y cuando lo valida, empieza el combate
+  for (let index = 0; index < ataqueJugador.length; index++) {
+    console.log(ataqueJugador[index])
+    if(ataqueJugador[index]==ataqueEnemigo[index]){
+      indexAmbosOponentes(index,index)
+      crearMensajes("EMPATE")
+    }
+    else if (ataqueJugador[index] === 'FUEGO' && ataqueEnemigo[index] === 'TIERRA') {
+      indexAmbosOponentes(index,index)
+      crearMensajes("GANASTE")
+    } else if (ataqueJugador[index] === 'AGUA' && ataqueEnemigo[index] === 'FUEGO') {
+      indexAmbosOponentes(index,index)
+      crearMensajes("GANASTE")
+    } else if (ataqueJugador[index] === 'TIERRA' && ataqueEnemigo[index] === 'AGUA') {
+      indexAmbosOponentes(index,index)
+      crearMensajes("GANASTE")
+    } else {
+      indexAmbosOponentes(index,index)
+      crearMensajes('PERDISTE')
+    }
+  revisarVidas()
+    
+  }
+}
+
+
+
 
 
 function crearMensajes(resultado) {
@@ -256,8 +297,8 @@ function crearMensajes(resultado) {
   let nuevoAtaqueDelEnemigo = document.createElement('p')
 
   sectionMensajes.innerHTML = resultado
-  nuevoAtaqueDelJugador.innerHTML = ataqueJugador
-  nuevoAtaqueDelEnemigo.innerHTML = ataqueEnemigo
+  nuevoAtaqueDelJugador.innerHTML = indexAtaqueJugador
+  nuevoAtaqueDelEnemigo.innerHTML = indexAtaqueEnemigo
 
 
   ataqueDelJugador.appendChild(nuevoAtaqueDelJugador)
@@ -273,33 +314,6 @@ function crearMensajeFinal(resultadoFinal) {
 
   sectionReinicio.style.display = 'block'
 }
-
-
-function combate() {
-  if (ataqueJugador == ataqueEnemigo) {
-    crearMensajes("EMPATE")
-  } else if (ataqueJugador == 'FUEGO' && ataqueEnemigo == 'TIERRA') {
-    crearMensajes("GANASTE")
-    vidasJugador--
-    spanVidasEnemigo.innerHTML = vidasEnemigo
-  } else if (ataqueJugador == 'AGUA' && ataqueEnemigo == 'FUEGO') {
-    crearMensajes("GANASTE")
-    vidasJugador--
-    spanVidasEnemigo.innerHTML = vidasEnemigo
-  } else if (ataqueJugador == 'TIERRA' && ataqueEnemigo == 'AGUA') {
-    crearMensajes("GANASTE")
-    vidasEnemigo--
-    spanVidasEnemigo.innerHTML = vidasEnemigo
-  } else {
-    crearMensajes('PERDISTE')
-    vidasJugador--
-    spanVidasJugador.innerHTML = vidasJugador
-  }
-
-  // revisar las vidas
-  revisarVidas()
-}
-
 
 function revisarVidas() {
   if (vidasEnemigo == 0)
