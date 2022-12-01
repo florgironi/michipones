@@ -311,10 +311,10 @@ function combate() {
 function revisarVictorias() {
   if (victoriasEnemigo == vidasJugador) {
     crearMensajeFinal("Esto fue un empate!!");
-  } else if (victoriasEnemigo > victoriasJugador){ 
+  } else if (victoriasEnemigo > victoriasJugador) {
     crearMensajeFinal("Lo siento, Perdiste");
-  } else{
-    crearMensajeFinal("FELICITACIONES! GANASTE :)")
+  } else {
+    crearMensajeFinal("FELICITACIONES! GANASTE :)");
   }
 }
 
@@ -331,10 +331,6 @@ function crearMensajes(resultado) {
 }
 function crearMensajeFinal(resultadoFinal) {
   sectionMensajes.innerHTML = resultadoFinal;
-  botonAgua.disabled = true;
-  botonFuego.disabled = true;
-  botonTierra.disabled = true;
-
   sectionReinicio.style.display = "block";
 }
 function reiniciarJuego() {
