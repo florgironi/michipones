@@ -17,14 +17,19 @@ const sectionMensajes = document.getElementById("resultado");
 const ataqueDelJugador = document.getElementById("ataque-jugador");
 const ataqueDelEnemigo = document.getElementById("ataque-enemigo");
 
-const spanVictoriasJugador = document.getElementById("vidasJugador");
-const spanVictoriasEnemigo = document.getElementById("vidasEnemigo");
+const spanVictoriasJugador = document.getElementById("victoriasJugador");
+const spanVictoriasEnemigo = document.getElementById("victoriasEnemigo");
 
 const spanAtaquejugador = document.getElementById("ataque-jugador");
 const spanAtaqueEnemigo = document.getElementById("ataque-enemigo");
 
 const contenedorTarjetas = document.getElementById("contenedor-tarjetas");
+const imgMichiponJugador = document.getElementById("imagen-mascota-jugador")
+const imgMichiponEnemigo = document.getElementById("imagen-mascota-enemigo")
 
+
+let imagenJugadorElegido
+let imagenEnemigoElegido
 let michipones = [];
 let opcionDeMichipones;
 let ataqueEnemigo = [];
@@ -164,7 +169,8 @@ function aleatorio(min, max) {
 
 function seleccionarMascotaJugador() {
   sectionSeleccionarMascota.style.display = "none";
-  sectionSeleccionarAtaque.style.display = "block";
+  sectionSeleccionarAtaque.style.display = "flex";
+  
 
   if (inputSerpentina.checked) {
     spanMascotaJugador.innerHTML = inputSerpentina.id;
@@ -210,8 +216,17 @@ function mostrarAtaques(ataques) {
   botonAgua = document.getElementById("boton-agua");
   botonFuego = document.getElementById("boton-fuego");
   botonTierra = document.getElementById("boton-tierra");
-  botones = document.querySelectorAll(".BAtaque");
+  botones = document.querySelectorAll(".BAtaque");  
 }
+
+// function mostrarImgMascotas(){
+//   imagenJugadorElegido = `<img src="${michipon.foto}" alt="${michipon.nombre}">`
+//   imagenEnemigoElegido = `<img src="${michipon.foto}" alt="${michipon.nombre}">`
+
+//   imgMichiponJugador.innerHTML = imagenJugadorElegido
+//   imgMichiponEnemigo.innerHTML = imagenEnemigoElegido
+
+// }
 
 function secuenciaAtaque() {
   botones.forEach((boton) => {
@@ -309,7 +324,7 @@ function combate() {
   }
 }
 function revisarVictorias() {
-  if (victoriasEnemigo == vidasJugador) {
+  if (victoriasEnemigo == victoriasJugador) {
     crearMensajeFinal("Esto fue un empate!!");
   } else if (victoriasEnemigo > victoriasJugador) {
     crearMensajeFinal("Lo siento, Perdiste");

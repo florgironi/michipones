@@ -2,21 +2,21 @@
 
 body{
     font-family: 'Source Serif Pro', serif;
-    background-image:linear-gradient(rgba(40, 40, 40, 0.8), #efababcc) ,url("./asses/fondo8.jpg");
+    background-image:linear-gradient(rgba(40, 40, 40, 0.8), #efababcc) ,url("./asses/fondodegatos.webp");
     min-height: 100vh;
 }
 
 /* ==============   TITULOS   =================== */
 .title {
     color: hwb(0 98% 1%);
-    font-size: 100px;
+    font-size: 10rem;
     text-align: center;
     margin: 30px;
 }
 .subtitulo{
     color: hsl(0, 100%, 97%);
-    font-size: 50px;
-    margin-top: 0;
+    font-size: 7rem;
+    margin: 7rem;
 
 }
 /* ===============   MASCOTAS ===================== */
@@ -85,56 +85,68 @@ input:checked+label {
 
 /* -----------------------------   SEGUNDA PANTALLA    ----------------------- */
 
-.segunda-pantalla{
-    display: flex;
+#Seleccionar-ataque{
+    justify-content: space-around;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
     text-align: center;
 }
-.envoltorio-ataque{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
 
-
-.boton-fuego,.boton-agua, .boton-tierra{
-    height: 111px;
-    border-radius: 20px;
-    width: 228px;
-    margin: 20px;
-    font-size: 30px;
-}
 .boton-de-ataque{
-    height: 57px;
-    border-radius: 20px;
-    width: 60px;
-    margin: 7px;
-    font-size: 30px;
+    height: 6rem;
+    border-radius: 50px;
+    width: 6rem;
+    margin: 1rem;
+    font-size: 3rem;
 }
 
 /* ======================  Mascotas de segunda pantalla ========================== */
-
 .envoltorio-tarjetas-mascotas{
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    flex-direction: row;
+    background: linear-gradient(hsla(0, 0%, 0%, 0.20), hsla(0, 0%, 0%, 0.20));
+    margin-top: 2rem;
+    margin-bottom: 2rem;
     align-items: center;
-
+    font-size: 5rem;
+    height: 50rem;
+    width: 90rem;
+    padding: 5rem;
+    border: solid black 2px;
 }
+.envoltorio-mascota-jugador,.envoltorio-mascota-enemigo{
+    display: flex;
+    align-items: center;
+    height: 22rem;
+}
+.envoltorio-botones{
+    display: flex;
+    flex-direction: column;
+    margin: 5rem;
+}
+#mascota-jugador,#mascota-enemigo{
+    display: block;
+    width: max-content;
+}
+
 .envoltorio-mensaje-reinicio{
     display: flex;
     justify-content: center;
     align-items: center;
     background: linear-gradient(hsla(0, 0%, 0%, 0.20), hsla(0, 0%, 0%, 0.20));
     border-radius: 20px;
-    font-size: 30px;
-    height: 127px;
-    width: 476px;
+    font-size: 5rem;
+    height: 16rem;
+    width: 60rem;
     flex-direction: column;
     color: #FFFF;
-
+    padding: 52px;
+}
+img{
+    height:33rem;
 }
 
 .boton-reinicio{
@@ -145,37 +157,15 @@ input:checked+label {
     cursor: pointer;
 }
 
-
-.envoltorio-mascota-jugador, .envoltorio-mascota-enemigo{
-    height: 400px;
-    width: 270px;
-    font-size: 30px;
-    margin: 31px;
-}
-
 #resultado{
     margin: 0px;
 }
 
-.versus{
-    font-size: 50px;
-}
-#mascota-jugador, #mascota-enemigo{
-    display: block;
-}
-
-.mascota-jugador, .mascota-enemigo{
-    border: solid 5px;
-    border-radius: 20px;
-    height: 317px;
-    background-color: hsl(0, 27%, 68%);
-    padding: 20px;
-}
 
 
 
 /* -------------------- RESPONSIVE ----------------------- */
-@media(max-width:420px){
+@media(max-width:425px){
     .cajaMascota{
     height: 190px;
     width: 148px;
@@ -195,7 +185,7 @@ input:checked+label {
     }
     .subtitulo{
     font-size: 25px;
-    margin-bottom: 5px; ;
+    margin: 5px; ;
     }
     .boton-seleccionar{
     height: 49px;
@@ -205,25 +195,35 @@ input:checked+label {
     margin: 5px;
     text-align: center;
     }
+
+    /* SEGUNDA PANTALLA  */
+    .envoltorio-tarjetas-mascotas{
+    font-size: 1rem;
+    height: 190px;
+    width: 148px;
+    justify-content: center;
+    }
+    img{
+    height: 9rem;
+    }
     .envoltorio-botones{
     flex-direction:column;
     align-items: center;
+    margin: 2px;
     }
-    .boton-agua, .boton-fuego, .boton-tierra{
-    margin: 5px;
-    height: 66px;
-    font-size: 26px;
+    .boton-de-ataque{
+    margin:5px;
+    height: 2rem;
+    width: 2rem;
+    font-size: 1rem;
+    }
+    .envoltorio-mensaje-reinicio{
+    font-size: 2rem;
+    height: 2rem;
+    width: 13rem;
+    padding: 21px;
     }
     
-    .envoltorio-mascota-enemigo,.envoltorio-mascota-jugador{
-    height: 200px;
-    width: 150px;
-    font-size: 23px;
-    margin: 10px;
-    }
-    .versus{
-    display: none;
-    }
     .mascota-enemigo,.mascota-jugador{
     height: 100px;
     }

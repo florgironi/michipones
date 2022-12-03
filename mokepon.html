@@ -10,53 +10,70 @@
 </head>
 
 <body>
-		<section id="Seleccionar-mascota" class="envoltorio-mascotas">
+	<section id="Seleccionar-mascota" class="envoltorio-mascotas">
+		<h1 id="title" class="title">Michipones</h1>
+		<h2 class="subtitulo">Elige tu Michipon: </h2>
+		<div id='contenedor-tarjetas' class="tarjetas">
+		</div>
+		<Button id="boton-mascotas" class="boton-seleccionar"> A Jugar </Button>
+	</section>
+
+	<section id="Seleccionar-ataque">
+		<div>
 			<h1 id="title" class="title">Michipones</h1>
-
-			<h2 class="subtitulo">Elige tu mascota: </h2>
-
-			<div  id='contenedor-tarjetas' class="tarjetas">
-				
-			</div>
-			<Button id="boton-mascotas" class="boton-seleccionar"> A Jugar </Button>
-		</section>
-
-		<div class="segunda-pantalla">
-			<section id="Seleccionar-ataque">
-				<h1 id="title" class="title">Michipones</h1>
-
-			<div class="envoltorio-ataque">
-					<h2 class="subtitulo">Elige tu ataque:</h2>
-
-					<div id='contenedor-botones'class="envoltorio-botones">
-					</div>
-
-					<div class="envoltorio-mensaje-reinicio">
-						<p id="resultado">Mucha suerte!</p>
-						<section id="reinicio">
-							<button id="boton-reinicio" class="boton-reinicio"> Reiniciar </button>
-						</section>
-					</div>
-			</div>
-			
-			<div class="envoltorio-tarjetas-mascotas">
-						<div class="envoltorio-mascota-jugador">
-							<p class="mascota-jugador">
-								<span id="vidasJugador" class="vidas">0 </span> 🏆
-								<span id="mascota-jugador"></span>
-							<div id="ataque-jugador"></div>
-						</div>
-						<div class="envoltorio-mascota-enemigo">
-							<p class="mascota-enemigo">
-								<span id="vidasEnemigo" class="vidas">0 </span> 🏆
-								<span id="mascota-enemigo"></span>
-							<div id="ataque-enemigo"></div>
-						</div>	
-			</div>
+			<h2 class="subtitulo">Nuevo Versus</h2>
 		</div>
 
-	<script src="./js/mokepon.js"></script>
+		<!-- Envoltorio de tarjetas -->
+		<div class="envoltorio-tarjetas-mascotas">
 
+			<!-- Tarjeta mascota jugador  -->
+			<div class="envoltorio-mascota-jugador">
+				<div class="tarjeta-mascota-elegida-jugador">
+					<div id="imagen-mascota-jugador">
+						<img src="./asses/pinteres6.jpg" alt="">
+					</div>
+					<span id="mascota-jugador"></span>
+					<span id="victoriasJugador" class="victorias">0 </span> 🏆
+				</div>
+				<!-- CONTENEDOR DE ATAQUES -->
+				<div class="envoltorio-ataque">
+					<div id='contenedor-botones' class="envoltorio-botones">
+					</div>
+				</div>
+			</div>
+
+
+			<!-- Tarjeta mascota enemigo -->
+			<div class="envoltorio-mascota-enemigo">
+				<div class="tarjeta-mascota-elegida-enemigo">
+					<div id="imagen-mascota-enemigo">
+						<img src="./asses/pinteres15.jpg" alt="">
+					</div>
+					<span id="mascota-enemigo"></span>
+					<span id="victoriasEnemigo" class="victorias">0 </span> 🏆
+				</div>
+			</div>
+		</div>
+		
+		<div>
+			<div id="ataque-jugador"></div>
+			<div id="ataque-enemigo"></div>
+		</div>
+
+
+
+		<!-- Mensaje de abajo con mucha suerte y reinicio -->
+		<div class="envoltorio-mensaje-reinicio">
+			<p id="resultado">Mucha suerte!</p>
+
+			<section id="reinicio">
+				<button id="boton-reinicio" class="boton-reinicio"> Reiniciar </button>
+			</section>
+		</div>
+
+	</section>
+	<script src="./js/mokepon.js"></script>
 </body>
 
 </html>
