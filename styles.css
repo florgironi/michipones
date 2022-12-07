@@ -235,6 +235,8 @@ img{
 
     #mapa{
         border: solid #FFFF 3px;
+        height: 400px;
+        width: 800px;
     }
     .titleMapa{
         font-size: 80px;

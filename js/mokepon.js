@@ -66,7 +66,7 @@ class michipon {
     this.ataques = [];
     this.x = 20
     this.y = 20
-    this.ancho = 70
+    this.ancho = 60
     this.alto = 120
     this.mapaFoto = new Image()
     this.mapaFoto.src = foto
@@ -183,9 +183,9 @@ function aleatorio(min, max) {
 function seleccionarMascotaJugador() {
   sectionSeleccionarMascota.style.display = "none";
   // sectionSeleccionarAtaque.style.display = "flex";
-  
-  sectionVerMapa.style.display = 'flex'
-  intervalo = setInterval(pintarPersonaje, 50)
+  iniciarMapa()
+  sectionVerMapa.style.display = "flex"
+
 
   if (inputSerpentina.checked) {
     spanMascotaJugador.innerHTML = inputSerpentina.id;
@@ -399,5 +399,31 @@ function detenerMovimiento(){
   serpentina.velocidadY = 0
 }
 
+function sePresionoUnaTecla(event){
+  switch (event.key) {
+    case 'ArrowUp':
+        moverArriba()
+        break
+    case 'ArrowDown':
+        moverAbajo()
+        break
+    case 'ArrowLeft':
+        moverIzquierda()
+        break
+    case 'ArrowRight':
+        moverDerecha()
+        break
+    default:
+        break
+}
+}
 
+function iniciarMapa() {
+  intervalo = setInterval(pintarPersonaje, 50)
+  
+  window.addEventListener('keydown', sePresionoUnaTecla)
+
+  window.addEventListener('keyup', detenerMovimiento)
+}
+ 
 window.addEventListener("load", iniciarjuego);
