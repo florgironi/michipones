@@ -56,6 +56,7 @@ let botones = [];
 let ataqueJugador = [];
 let victoriasEnemigo = 0;
 let victoriasJugador = 0;
+let intervalo;
 
 class michipon {
   constructor(nombre, id, foto) {
@@ -65,10 +66,12 @@ class michipon {
     this.ataques = [];
     this.x = 20
     this.y = 20
-    this.ancho = 80
+    this.ancho = 70
     this.alto = 120
     this.mapaFoto = new Image()
     this.mapaFoto.src = foto
+    this.velocidadX = 0
+    this.velocidadY = 0
   }
 }
 
@@ -182,6 +185,7 @@ function seleccionarMascotaJugador() {
   // sectionSeleccionarAtaque.style.display = "flex";
   
   sectionVerMapa.style.display = 'flex'
+  intervalo = setInterval(pintarPersonaje, 50)
 
   if (inputSerpentina.checked) {
     spanMascotaJugador.innerHTML = inputSerpentina.id;
@@ -364,6 +368,9 @@ function reiniciarJuego() {
 }
 
 function pintarPersonaje(){
+  serpentina.x = serpentina.x + serpentina.velocidadX
+  serpentina.y = serpentina.y + serpentina.velocidadY
+
   lienzo.clearRect(0,0,mapa.width,mapa.height)
   lienzo.drawImage(
     serpentina.mapaFoto,
@@ -375,22 +382,22 @@ function pintarPersonaje(){
 }
 
 function moverDerecha(){
-  serpentina.x = serpentina.x + 5 
-  pintarPersonaje()
+  serpentina.velocidadX = 5
 }
 function moverIzquierda(){
-  serpentina.x = serpentina.x - 5 
-  pintarPersonaje()
+  serpentina.velocidadX = -5
 }
 function moverArriba(){
-  serpentina.y = serpentina.y -5
-  pintarPersonaje()
+  serpentina.velocidadY = -5
 }
 function moverAbajo(){
-  serpentina.y = serpentina.y + 5 
-  pintarPersonaje()
+  serpentina.velocidadY = 5
 }
 
+function detenerMovimiento(){
+  serpentina.velocidadX = 0
+  serpentina.velocidadY = 0
+}
 
 
 window.addEventListener("load", iniciarjuego);

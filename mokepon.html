@@ -21,10 +21,10 @@
 	<section id="ver-mapa">
 		<h1 id="title" class="titleMapa">Recorre el mapa con tu Michipon</h1>
 		<canvas id="mapa"></canvas>
-		<button class="botonMoveMichipon" onclick="moverArriba()">⬆️</button>
-		<button class="botonMoveMichipon left" onclick="moverIzquierda()">⬅️</button>
-		<button class="botonMoveMichipon right" onclick="moverDerecha()">➡️</button>
-		<button class="botonMoveMichipon" onclick="moverAbajo()">⬇️</button>
+		<button class="botonMoveMichipon" onmouseup="detenerMovimiento()" onmousedown="moverArriba()">⬆️</button>
+		<button class="botonMoveMichipon left" onmouseup="detenerMovimiento()" onmousedown="moverIzquierda()">⬅️</button>
+		<button class="botonMoveMichipon right" onmouseup="detenerMovimiento()" onmousedown="moverDerecha()">➡️</button>
+		<button class="botonMoveMichipon" onmouseup="detenerMovimiento()" onmousedown="moverAbajo()">⬇️</button>
 
 	</section>
 	
