@@ -63,12 +63,12 @@ class michipon {
     this.id = id;
     this.foto = foto;
     this.ataques = [];
-    // this.x = 30
-    // this.y = 30
-    // this.ancho = 30
-    // this.alto = 20
-    // this.mapaFoto = new Image()
-    // this.mapaFoto.src = foto
+    this.x = 20
+    this.y = 20
+    this.ancho = 80
+    this.alto = 120
+    this.mapaFoto = new Image()
+    this.mapaFoto.src = foto
   }
 }
 
@@ -78,8 +78,8 @@ let serpentina = new michipon(
   "Serpentina",
   "./asses/pinteres12.jpg"
 );
-let teddy = new michipon("Teddy", "Teddy", "./asses/pinteres9.jpg", 5);
-let kira = new michipon("Kira", "Kira", "./asses/pinteres6.jpg", 5);
+let teddy = new michipon("Teddy", "Teddy", "./asses/pinteres9.jpg");
+let kira = new michipon("Kira", "Kira", "./asses/pinteres6.jpg");
 let amigodelhombre = new michipon(
   "Amigo del Hombre",
   "Amigodelhombre",
@@ -182,17 +182,6 @@ function seleccionarMascotaJugador() {
   // sectionSeleccionarAtaque.style.display = "flex";
   
   sectionVerMapa.style.display = 'flex'
-  let imagenDeSerpentina = new Image()
-  imagenDeSerpentina.src = serpentina.foto
-  lienzo.drawImage(
-      imagenDeSerpentina,
-      10,
-      10,
-      80,
-      130
-  )
-
-
 
   if (inputSerpentina.checked) {
     spanMascotaJugador.innerHTML = inputSerpentina.id;
@@ -374,21 +363,33 @@ function reiniciarJuego() {
   location.reload();
 }
 
-// function pintarPersonaje(){
-//   lienzo.clearRect(0,0,mapa.width,mapa.height)
-//   lienzo.drawImage(
-//     serpentina.mapaFoto,
-//     serpentina.x,
-//     serpentina.y,
-//     serpentina.ancho,
-//     serpentina.alto
-//   )
-// }
+function pintarPersonaje(){
+  lienzo.clearRect(0,0,mapa.width,mapa.height)
+  lienzo.drawImage(
+    serpentina.mapaFoto,
+    serpentina.x,
+    serpentina.y,
+    serpentina.ancho,
+    serpentina.alto
+  )
+}
 
-// function moverMichipon(){
-//   serpentina.x = serpentina.x + 5 
-//   pintarPersonaje()
-// }
+function moverDerecha(){
+  serpentina.x = serpentina.x + 5 
+  pintarPersonaje()
+}
+function moverIzquierda(){
+  serpentina.x = serpentina.x - 5 
+  pintarPersonaje()
+}
+function moverArriba(){
+  serpentina.y = serpentina.y -5
+  pintarPersonaje()
+}
+function moverAbajo(){
+  serpentina.y = serpentina.y + 5 
+  pintarPersonaje()
+}
 
 
 

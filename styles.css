@@ -236,3 +236,7 @@ img{
     #mapa{
         border: solid #FFFF 3px;
     }
+    .titleMapa{
+        font-size: 80px;
+        color: #FFFF
+    }
