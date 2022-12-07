@@ -27,7 +27,12 @@ const contenedorTarjetas = document.getElementById("contenedor-tarjetas");
 const imgMichiponJugador = document.getElementById("imagen-mascota-jugador")
 const imgMichiponEnemigo = document.getElementById("imagen-mascota-enemigo")
 
+const sectionVerMapa = document.getElementById('ver-mapa')
+const mapa = document.getElementById('mapa')
 
+
+
+let lienzo = mapa.getContext('2d')
 let imagenJugadorElegido
 let imagenEnemigoElegido
 let michipones = [];
@@ -53,40 +58,42 @@ let victoriasEnemigo = 0;
 let victoriasJugador = 0;
 
 class michipon {
-  constructor(nombre, id, foto, vida) {
+  constructor(nombre, id, foto) {
     this.nombre = nombre;
     this.id = id;
     this.foto = foto;
-    this.vida = vida;
     this.ataques = [];
+    // this.x = 30
+    // this.y = 30
+    // this.ancho = 30
+    // this.alto = 20
+    // this.mapaFoto = new Image()
+    // this.mapaFoto.src = foto
   }
 }
+
 
 let serpentina = new michipon(
   "Serpentina",
   "Serpentina",
-  "./asses/pinteres12.jpg",
-  15
+  "./asses/pinteres12.jpg"
 );
 let teddy = new michipon("Teddy", "Teddy", "./asses/pinteres9.jpg", 5);
 let kira = new michipon("Kira", "Kira", "./asses/pinteres6.jpg", 5);
 let amigodelhombre = new michipon(
   "Amigo del Hombre",
   "Amigodelhombre",
-  "./asses/pinteres13.jpg",
-  5
+  "./asses/pinteres13.jpg"
 );
 let tiguronsin = new michipon(
   "Tiguronsin",
   "Tiguronsin",
-  "./asses/pinteres8.jpg",
-  5
+  "./asses/pinteres8.jpg"
 );
 let ardillita = new michipon(
   "Ardillita",
   "Ardillita",
-  "./asses/ardillitamichipon.jpg",
-  15
+  "./asses/ardillitamichipon.jpg"
 );
 
 // la sig expresion sirve para agregar ataques a nuestros mokepones que viven dentro de una classe
@@ -138,6 +145,9 @@ michipones.push(serpentina, teddy, kira, amigodelhombre, tiguronsin, ardillita);
 
 function iniciarjuego() {
   sectionSeleccionarAtaque.style.display = "none";
+  sectionVerMapa.style.display = 'none'
+
+
 
   // este metodo nos ayuda a iterar o recorrer cada uno de nuestros objetos dentro de nuestro array "para cada elemento dentro del arrray, generame esto en el html"
   michipones.forEach((michipon) => {
@@ -169,8 +179,20 @@ function aleatorio(min, max) {
 
 function seleccionarMascotaJugador() {
   sectionSeleccionarMascota.style.display = "none";
-  sectionSeleccionarAtaque.style.display = "flex";
+  // sectionSeleccionarAtaque.style.display = "flex";
   
+  sectionVerMapa.style.display = 'flex'
+  let imagenDeSerpentina = new Image()
+  imagenDeSerpentina.src = serpentina.foto
+  lienzo.drawImage(
+      imagenDeSerpentina,
+      10,
+      10,
+      80,
+      130
+  )
+
+
 
   if (inputSerpentina.checked) {
     spanMascotaJugador.innerHTML = inputSerpentina.id;
@@ -351,4 +373,23 @@ function crearMensajeFinal(resultadoFinal) {
 function reiniciarJuego() {
   location.reload();
 }
+
+// function pintarPersonaje(){
+//   lienzo.clearRect(0,0,mapa.width,mapa.height)
+//   lienzo.drawImage(
+//     serpentina.mapaFoto,
+//     serpentina.x,
+//     serpentina.y,
+//     serpentina.ancho,
+//     serpentina.alto
+//   )
+// }
+
+// function moverMichipon(){
+//   serpentina.x = serpentina.x + 5 
+//   pintarPersonaje()
+// }
+
+
+
 window.addEventListener("load", iniciarjuego);

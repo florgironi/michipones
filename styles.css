@@ -164,9 +164,6 @@ img{
     margin: 0px;
 }
 
-
-
-
 /* -------------------- RESPONSIVE ----------------------- */
 @media(max-width:425px){
     .cajaMascota{
@@ -228,3 +225,14 @@ img{
     }
     
 }
+/* ==============  CANVAS  ======================= */
+
+    #ver-mapa{
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #mapa{
+        border: solid #FFFF 3px;
+    }
