@@ -62,17 +62,18 @@ mapaBackground.src = './asses/fondoCanvas1.jpg'
 
 
 class michipon {
-  constructor(nombre, id, foto, mapaFoto,x = 10,y = 10) {
+  constructor(nombre, id, foto, mapaFoto, x = 10,y = 10) {
     this.nombre = nombre;
     this.id = id;
     this.foto = foto;
     this.ataques = [];
-    this.x = 20
-    this.y = 20
+    this.x = x
+    this.y = y
     this.ancho = 60
     this.alto = 120
     this.mapaFoto = new Image()
     this.mapaFoto.src = mapaFoto
+    this.mapaFoto.style.borderRadius = 50
     this.velocidadX = 0
     this.velocidadY = 0
   }
@@ -136,11 +137,18 @@ let ardillita = new michipon(
 
 );
 
+
+
+
+
+
 let serpentinaEnemigo = new michipon(
   "Serpentina",
   "Serpentina",
   "./asses/pinteres12.jpg",
   "./asses/pinteres12.jpg",
+  80,
+  120
   // "aca tiene que ir la imagen de la cara del michipon"
 );
 let teddyEnemigo = new michipon(
@@ -148,6 +156,8 @@ let teddyEnemigo = new michipon(
   "Teddy",
   "./asses/pinteres9.jpg",
   "./asses/pinteres9.jpg",
+  150,
+  95
   // "aca tiene que ir la imagen de la cara del michipon"
   );
 let kiraEnemigo = new michipon(
@@ -155,6 +165,8 @@ let kiraEnemigo = new michipon(
   "Kira", 
   "./asses/pinteres6.jpg",
   "./asses/pinteres6.jpg",
+  200,
+  190,
 
   // "aca tiene que ir la imagen de la cara del michipon"
   );
@@ -163,6 +175,8 @@ let amigodelhombreEnemigo = new michipon(
   "Amigodelhombre",
   "./asses/pinteres13.jpg",
   "./asses/pinteres13.jpg",
+  300,
+  200
   // "aca tiene que ir la imagen de la cara del michipon"
 );
 let tiguronsinEnemigo = new michipon(
@@ -170,6 +184,7 @@ let tiguronsinEnemigo = new michipon(
   "Tiguronsin",
   "./asses/pinteres8.jpg",
   "./asses/pinteres8.jpg",
+
   // "aca tiene que ir la imagen de la cara del michipon"
 
 );
@@ -368,7 +383,6 @@ function funcionAtaqueEnemigo() {
   } else {
     ataqueEnemigo.push("TIERRA");
   }
-  console.log("arrayEnemigo:", ataqueEnemigo);
   iniciarCombate();
 }
 
@@ -385,7 +399,6 @@ function indexAmbosOponentes(jugador, enemigo) {
 function combate() {
   // Recorre el array de la cantidad de ataques tanto del jugador como del enemigo, y cuando lo valida, empieza el combate
   for (let index = 0; index < ataqueJugador.length; index++) {
-    console.log(ataqueJugador[index]);
     if (ataqueJugador[index] == ataqueEnemigo[index]) {
       indexAmbosOponentes(index, index);
       crearMensajes("EMPATE");
@@ -452,7 +465,6 @@ function reiniciarJuego() {
 }
 
 function pintarCanvas(){
-  console.log(mascotaJugadorObjeto)
   mascotaJugadorObjeto.x = mascotaJugadorObjeto.x + mascotaJugadorObjeto.velocidadX
   mascotaJugadorObjeto.y = mascotaJugadorObjeto.y + mascotaJugadorObjeto.velocidadY
     lienzo.clearRect(0, 0, mapa.width, mapa.height)
@@ -464,6 +476,9 @@ function pintarCanvas(){
         mapa.height
     )
   mascotaJugadorObjeto.pintarMichiponCanvas()
+  serpentinaEnemigo.pintarMichiponCanvas()
+  teddyEnemigo.pintarMichiponCanvas()
+  kiraEnemigo.pintarMichiponCanvas()
 }
 
 function moverDerecha(){
@@ -507,7 +522,6 @@ function iniciarMapa() {
   mapa.width = 800
   mapa.height = 500
   mascotaJugadorObjeto = obtenerObjetoMascota(mascotaJugador)
-  console.log(mascotaJugadorObjeto, mascotaJugador);
   intervalo = setInterval(pintarCanvas, 50)
   
   window.addEventListener('keydown', sePresionoUnaTecla)
@@ -517,7 +531,7 @@ function iniciarMapa() {
 
 function obtenerObjetoMascota() {
   for (let i = 0; i < michipones.length; i++) {
-      if (mascotaJugador === michipones[i].nombre) {
+      if (mascotaJugador === michipones[i].id) {
           return michipones[i]
       }
   }
