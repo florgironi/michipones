@@ -30,7 +30,7 @@ const imgMichiponEnemigo = document.getElementById("imagen-mascota-enemigo")
 const sectionVerMapa = document.getElementById('ver-mapa')
 const mapa = document.getElementById('mapa')
 
-
+// ver de nuevo la clase IMAGENES Y PERSONAJES DE FONDO//
 
 let lienzo = mapa.getContext('2d')
 let imagenJugadorElegido
@@ -57,9 +57,12 @@ let ataqueJugador = [];
 let victoriasEnemigo = 0;
 let victoriasJugador = 0;
 let intervalo;
+let mapaBackground = new Image()
+mapaBackground.src = './asses/fondoCanvas1.jpg'
+
 
 class michipon {
-  constructor(nombre, id, foto) {
+  constructor(nombre, id, foto, mapaFoto,x = 10,y = 10) {
     this.nombre = nombre;
     this.id = id;
     this.foto = foto;
@@ -69,9 +72,20 @@ class michipon {
     this.ancho = 60
     this.alto = 120
     this.mapaFoto = new Image()
-    this.mapaFoto.src = foto
+    this.mapaFoto.src = mapaFoto
     this.velocidadX = 0
     this.velocidadY = 0
+  }
+
+
+  pintarMichiponCanvas(){
+    lienzo.drawImage(
+      this.mapaFoto,
+      this.x,
+      this.y,
+      this.ancho,
+      this.alto
+    )
   }
 }
 
@@ -79,25 +93,95 @@ class michipon {
 let serpentina = new michipon(
   "Serpentina",
   "Serpentina",
-  "./asses/pinteres12.jpg"
+  "./asses/pinteres12.jpg",
+  "./asses/pinteres12.jpg",
+  // "aca tiene que ir la imagen de la cara del michipon"
 );
-let teddy = new michipon("Teddy", "Teddy", "./asses/pinteres9.jpg");
-let kira = new michipon("Kira", "Kira", "./asses/pinteres6.jpg");
+let teddy = new michipon(
+  "Teddy", 
+  "Teddy",
+  "./asses/pinteres9.jpg",
+  "./asses/pinteres9.jpg",
+  // "aca tiene que ir la imagen de la cara del michipon"
+  );
+let kira = new michipon(
+  "Kira", 
+  "Kira", 
+  "./asses/pinteres6.jpg",
+  "./asses/pinteres6.jpg",
+
+  // "aca tiene que ir la imagen de la cara del michipon"
+  );
 let amigodelhombre = new michipon(
   "Amigo del Hombre",
   "Amigodelhombre",
-  "./asses/pinteres13.jpg"
+  "./asses/pinteres13.jpg",
+  "./asses/pinteres13.jpg",
+  // "aca tiene que ir la imagen de la cara del michipon"
 );
 let tiguronsin = new michipon(
   "Tiguronsin",
   "Tiguronsin",
-  "./asses/pinteres8.jpg"
+  "./asses/pinteres8.jpg",
+  "./asses/pinteres8.jpg",
+  // "aca tiene que ir la imagen de la cara del michipon"
+
 );
 let ardillita = new michipon(
   "Ardillita",
   "Ardillita",
-  "./asses/ardillitamichipon.jpg"
+  "./asses/ardillitamichipon.jpg",
+  "./asses/ardillitamichipon.jpg",
+  // "aca tiene que ir la imagen de la cara del michipon"
+
 );
+
+let serpentinaEnemigo = new michipon(
+  "Serpentina",
+  "Serpentina",
+  "./asses/pinteres12.jpg",
+  "./asses/pinteres12.jpg",
+  // "aca tiene que ir la imagen de la cara del michipon"
+);
+let teddyEnemigo = new michipon(
+  "Teddy", 
+  "Teddy",
+  "./asses/pinteres9.jpg",
+  "./asses/pinteres9.jpg",
+  // "aca tiene que ir la imagen de la cara del michipon"
+  );
+let kiraEnemigo = new michipon(
+  "Kira", 
+  "Kira", 
+  "./asses/pinteres6.jpg",
+  "./asses/pinteres6.jpg",
+
+  // "aca tiene que ir la imagen de la cara del michipon"
+  );
+let amigodelhombreEnemigo = new michipon(
+  "Amigo del Hombre",
+  "Amigodelhombre",
+  "./asses/pinteres13.jpg",
+  "./asses/pinteres13.jpg",
+  // "aca tiene que ir la imagen de la cara del michipon"
+);
+let tiguronsinEnemigo = new michipon(
+  "Tiguronsin",
+  "Tiguronsin",
+  "./asses/pinteres8.jpg",
+  "./asses/pinteres8.jpg",
+  // "aca tiene que ir la imagen de la cara del michipon"
+
+);
+let ardillitaEnemigo = new michipon(
+  "Ardillita",
+  "Ardillita",
+  "./asses/ardillitamichipon.jpg",
+  "./asses/ardillitamichipon.jpg",
+  // "aca tiene que ir la imagen de la cara del michipon"
+
+);
+
 
 // la sig expresion sirve para agregar ataques a nuestros mokepones que viven dentro de una classe
 serpentina.ataques.push(
@@ -183,10 +267,9 @@ function aleatorio(min, max) {
 function seleccionarMascotaJugador() {
   sectionSeleccionarMascota.style.display = "none";
   // sectionSeleccionarAtaque.style.display = "flex";
-  iniciarMapa()
   sectionVerMapa.style.display = "flex"
-
-
+  
+  
   if (inputSerpentina.checked) {
     spanMascotaJugador.innerHTML = inputSerpentina.id;
     mascotaJugador = inputSerpentina.id;
@@ -210,6 +293,7 @@ function seleccionarMascotaJugador() {
   }
   extraerAtaques(mascotaJugador);
   seleccionarMascotaEnemigo();
+  iniciarMapa()
 }
 
 function extraerAtaques() {
@@ -367,36 +451,37 @@ function reiniciarJuego() {
   location.reload();
 }
 
-function pintarPersonaje(){
-  serpentina.x = serpentina.x + serpentina.velocidadX
-  serpentina.y = serpentina.y + serpentina.velocidadY
-
-  lienzo.clearRect(0,0,mapa.width,mapa.height)
-  lienzo.drawImage(
-    serpentina.mapaFoto,
-    serpentina.x,
-    serpentina.y,
-    serpentina.ancho,
-    serpentina.alto
-  )
+function pintarCanvas(){
+  console.log(mascotaJugadorObjeto)
+  mascotaJugadorObjeto.x = mascotaJugadorObjeto.x + mascotaJugadorObjeto.velocidadX
+  mascotaJugadorObjeto.y = mascotaJugadorObjeto.y + mascotaJugadorObjeto.velocidadY
+    lienzo.clearRect(0, 0, mapa.width, mapa.height)
+    lienzo.drawImage(
+        mapaBackground,
+        0,
+        0,
+        mapa.width,
+        mapa.height
+    )
+  mascotaJugadorObjeto.pintarMichiponCanvas()
 }
 
 function moverDerecha(){
-  serpentina.velocidadX = 5
+  mascotaJugadorObjeto.velocidadX = 5
 }
 function moverIzquierda(){
-  serpentina.velocidadX = -5
+  mascotaJugadorObjeto.velocidadX = -5
 }
 function moverArriba(){
-  serpentina.velocidadY = -5
+  mascotaJugadorObjeto.velocidadY = -5
 }
 function moverAbajo(){
-  serpentina.velocidadY = 5
+  mascotaJugadorObjeto.velocidadY = 5
 }
 
 function detenerMovimiento(){
-  serpentina.velocidadX = 0
-  serpentina.velocidadY = 0
+  mascotaJugadorObjeto.velocidadX = 0
+  mascotaJugadorObjeto.velocidadY = 0
 }
 
 function sePresionoUnaTecla(event){
@@ -417,13 +502,24 @@ function sePresionoUnaTecla(event){
         break
 }
 }
-
+// http://127.0.0.1:5500/
 function iniciarMapa() {
-  intervalo = setInterval(pintarPersonaje, 50)
+  mapa.width = 800
+  mapa.height = 500
+  mascotaJugadorObjeto = obtenerObjetoMascota(mascotaJugador)
+  console.log(mascotaJugadorObjeto, mascotaJugador);
+  intervalo = setInterval(pintarCanvas, 50)
   
   window.addEventListener('keydown', sePresionoUnaTecla)
 
   window.addEventListener('keyup', detenerMovimiento)
 }
- 
+
+function obtenerObjetoMascota() {
+  for (let i = 0; i < michipones.length; i++) {
+      if (mascotaJugador === michipones[i].nombre) {
+          return michipones[i]
+      }
+  }
+}
 window.addEventListener("load", iniciarjuego);
