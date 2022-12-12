@@ -7,6 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Michipones!</title>
 	<link rel="stylesheet" href="styles.css">
+	<link rel="stylesheet" href="stylesbutton.css">
 </head>
 
 <body>
@@ -21,10 +22,13 @@
 	<section id="ver-mapa">
 		<h1 id="title" class="titleMapa">Recorre el mapa con tu Michipon</h1>
 		<canvas id="mapa"></canvas>
-		<button class="botonMoveMichipon" onmouseup="detenerMovimiento()" onmousedown="moverArriba()">⬆️</button>
-		<button class="botonMoveMichipon left" onmouseup="detenerMovimiento()" onmousedown="moverIzquierda()">⬅️</button>
-		<button class="botonMoveMichipon right" onmouseup="detenerMovimiento()" onmousedown="moverDerecha()">➡️</button>
-		<button class="botonMoveMichipon" onmouseup="detenerMovimiento()" onmousedown="moverAbajo()">⬇️</button>
+
+		<div class="keys">
+		
+		<div data-key='65' class='key__button' onmouseup="detenerMovimiento()" onmousedown="moverArriba()">⬆️</div>
+		<div data-key='65' class='key__button' onmouseup="detenerMovimiento()" onmousedown="moverIzquierda()">⬅️</div>
+		<div data-key='65' class='key__button' onmouseup="detenerMovimiento()" onmousedown="moverDerecha()">➡️</div>
+		<div data-key='65' class='key__button' onmouseup="detenerMovimiento()" onmousedown="moverAbajo()">⬇️</div>
 
 	</section>
 	

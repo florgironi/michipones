@@ -31,7 +31,6 @@ const sectionVerMapa = document.getElementById('ver-mapa')
 const mapa = document.getElementById('mapa')
 
 // ver de nuevo la clase IMAGENES Y PERSONAJES DE FONDO//
-
 let lienzo = mapa.getContext('2d')
 let imagenJugadorElegido
 let imagenEnemigoElegido
