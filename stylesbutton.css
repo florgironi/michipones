@@ -4,22 +4,22 @@ body {
 }
 
 .keys {
-    width: 800px;
-    display: block;
-    margin: 20px;
+    width: 300px;
     display: grid;
     justify-items: center;
+    grid-template: repeat(2, 1fr) / repeat(3, 1fr);
+
 }
 
 .key__button {
     box-sizing: border-box;
     line-height: 80px;
-    font-size: 22px;
+    font-size: 30px;
     text-align: center;
     width: 80px;
     color: #555;
     cursor: pointer;
-    margin: 14px 8px;
+    margin: 14px 8px 0 8px;
     height: 80px;
     border-color: #f2f2f2;
     border-style: solid;
@@ -41,3 +41,21 @@ body {
         box-shadow: 0 0 1px #888, 0 1px 0 #fff, 0 0 0 #C0C0C0, 0 0px 30px rgba(#444, 0.15), 2px 2px 4px rgba(#444, 0.25), -2px 2px 4px rgba(#444, 0.25), 0 0px 4px rgba(#444, 0.25);
         transform: translateY(4px);
     }
+
+.arriba{
+    grid-column-start: 2;
+}
+
+.derecha{
+    grid-column-start: 3;
+    grid-row-start: 2;
+}
+.izquierda{
+    grid-row-start: 2;
+
+}
+.abajo{
+    grid-column-start: 2;
+    grid-row-start: 2;
+
+}

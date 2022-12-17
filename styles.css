@@ -235,12 +235,6 @@ img{
         justify-content: center;
     }
 
-    #mapa{
-        border: solid #FFFF 3px;
-        height: 300;
-        width: 200;
-        
-    }
     .titleMapa{
         font-size: 50px;
         color: #FFFF

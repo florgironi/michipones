@@ -25,10 +25,10 @@
 
 		<div class="keys">
 		
-		<div data-key='65' class='key__button' onmouseup="detenerMovimiento()" onmousedown="moverArriba()">⬆️</div>
-		<div data-key='65' class='key__button' onmouseup="detenerMovimiento()" onmousedown="moverIzquierda()">⬅️</div>
-		<div data-key='65' class='key__button' onmouseup="detenerMovimiento()" onmousedown="moverDerecha()">➡️</div>
-		<div data-key='65' class='key__button' onmouseup="detenerMovimiento()" onmousedown="moverAbajo()">⬇️</div>
+		<div data-key='65' class='key__button arriba' onmouseup="detenerMovimiento()" onmousedown="moverArriba()">⬆️</div>
+		<div data-key='65' class='key__button izquierda' onmouseup="detenerMovimiento()" onmousedown="moverIzquierda()">⬅️</div>
+		<div data-key='65' class='key__button derecha' onmouseup="detenerMovimiento()" onmousedown="moverDerecha()">➡️</div>
+		<div data-key='65' class='key__button abajo' onmouseup="detenerMovimiento()" onmousedown="moverAbajo()">⬇️</div>
 
 	</section>
 	
@@ -71,22 +71,22 @@
 			</div>
 		</div>
 		
-		<div>
-			<div id="ataque-jugador"></div>
-			<div id="ataque-enemigo"></div>
-		</div>
-
-
-
+		
+		
+		
 		<!-- Mensaje de abajo con mucha suerte y reinicio -->
 		<div class="envoltorio-mensaje-reinicio">
 			<p id="resultado">Mucha suerte!</p>
-
+			
 			<section id="reinicio">
 				<button id="boton-reinicio" class="boton-reinicio"> Reiniciar </button>
 			</section>
 		</div>
-
+		
+		<div>
+			<div id="ataque-jugador"></div>
+			<div id="ataque-enemigo"></div>
+		</div>
 	</section>
 	<script src="./js/mokepon.js"></script>
 </body>

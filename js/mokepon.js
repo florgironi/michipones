@@ -24,16 +24,16 @@ const spanAtaquejugador = document.getElementById("ataque-jugador");
 const spanAtaqueEnemigo = document.getElementById("ataque-enemigo");
 
 const contenedorTarjetas = document.getElementById("contenedor-tarjetas");
-const imgMichiponJugador = document.getElementById("imagen-mascota-jugador")
-const imgMichiponEnemigo = document.getElementById("imagen-mascota-enemigo")
+const imgMichiponJugador = document.getElementById("imagen-mascota-jugador");
+const imgMichiponEnemigo = document.getElementById("imagen-mascota-enemigo");
 
-const sectionVerMapa = document.getElementById('ver-mapa')
-const mapa = document.getElementById('mapa')
+const sectionVerMapa = document.getElementById("ver-mapa");
+const mapa = document.getElementById("mapa");
 
-// ver de nuevo la clase IMAGENES Y PERSONAJES DE FONDO//
-let lienzo = mapa.getContext('2d')
-let imagenJugadorElegido
-let imagenEnemigoElegido
+let lienzo = mapa.getContext("2d");
+let imagenJugadorElegido;
+let imagenEnemigoElegido;
+let mascotaJugadorObjeto;
 let michipones = [];
 let opcionDeMichipones;
 let ataqueEnemigo = [];
@@ -52,203 +52,222 @@ let botonAgua;
 let botonFuego;
 let botonTierra;
 let botones = [];
+let botonSerpiente;
+let botonVeneno;
+let botonMordida;
+let botonGato;
+let botonLeon;
+let botonBuo;
+let botonDragon;
+let botonArdilla;
 let ataqueJugador = [];
 let victoriasEnemigo = 0;
 let victoriasJugador = 0;
 let intervalo;
-let mapaBackground = new Image()
-mapaBackground.src = './asses/fondoCanvas1.jpg'
+let mapaBackground = new Image();
+mapaBackground.src = "./asses/fondoCanvas1.jpg";
+let alturaQueBuscamos;
+let anchoDelMapa = window.innerWidth - 20;
+const anchoMaximoDelMapa = 1000;
 
+if (anchoDelMapa > anchoMaximoDelMapa) {
+  anchoDelMapa = anchoMaximoDelMapa - 20;
+}
+alturaQueBuscamos = (anchoDelMapa * 600) / 900;
+mapa.width = anchoDelMapa;
+mapa.height = alturaQueBuscamos;
 
 class michipon {
-  constructor(nombre, id, foto, mapaFoto, x = 10,y = 10) {
+  constructor(nombre, id, foto, mapaFoto) {
     this.nombre = nombre;
     this.id = id;
     this.foto = foto;
     this.ataques = [];
-    this.x = x
-    this.y = y
-    this.ancho = 60
-    this.alto = 120
-    this.mapaFoto = new Image()
-    this.mapaFoto.src = mapaFoto
-    this.mapaFoto.style.borderRadius = 50
-    this.velocidadX = 0
-    this.velocidadY = 0
+    this.x = aleatorio(0, mapa.width - this.ancho);
+    this.y = aleatorio(0, mapa.height - this.alto);
+    this.ancho = 60;
+    this.alto = 120;
+    this.mapaFoto = new Image();
+    this.mapaFoto.src = mapaFoto;
+    this.mapaFoto.style.borderRadius = 50;
+    this.velocidadX = 0;
+    this.velocidadY = 0;
   }
 
-
-  pintarMichiponCanvas(){
-    lienzo.drawImage(
-      this.mapaFoto,
-      this.x,
-      this.y,
-      this.ancho,
-      this.alto
-    )
+  pintarMichiponCanvas() {
+    lienzo.drawImage(this.mapaFoto, this.x, this.y, this.ancho, this.alto);
   }
 }
-
-
 let serpentina = new michipon(
   "Serpentina",
   "Serpentina",
   "./asses/pinteres12.jpg",
-  "./asses/pinteres12.jpg",
-  // "aca tiene que ir la imagen de la cara del michipon"
+  "./asses/pinteres12.jpg"
 );
 let teddy = new michipon(
-  "Teddy", 
+  "Teddy",
   "Teddy",
   "./asses/pinteres9.jpg",
-  "./asses/pinteres9.jpg",
-  // "aca tiene que ir la imagen de la cara del michipon"
-  );
+  "./asses/pinteres9.jpg"
+);
 let kira = new michipon(
-  "Kira", 
-  "Kira", 
+  "Kira",
+  "Kira",
   "./asses/pinteres6.jpg",
-  "./asses/pinteres6.jpg",
-
-  // "aca tiene que ir la imagen de la cara del michipon"
-  );
+  "./asses/pinteres6.jpg"
+);
 let amigodelhombre = new michipon(
   "Amigo del Hombre",
   "Amigodelhombre",
   "./asses/pinteres13.jpg",
-  "./asses/pinteres13.jpg",
-  // "aca tiene que ir la imagen de la cara del michipon"
+  "./asses/pinteres13.jpg"
 );
 let tiguronsin = new michipon(
   "Tiguronsin",
   "Tiguronsin",
   "./asses/pinteres8.jpg",
-  "./asses/pinteres8.jpg",
-  // "aca tiene que ir la imagen de la cara del michipon"
-
+  "./asses/pinteres8.jpg"
 );
 let ardillita = new michipon(
   "Ardillita",
   "Ardillita",
   "./asses/ardillitamichipon.jpg",
-  "./asses/ardillitamichipon.jpg",
-  // "aca tiene que ir la imagen de la cara del michipon"
-
+  "./asses/ardillitamichipon.jpg"
 );
-
-
-
-
-
-
 let serpentinaEnemigo = new michipon(
   "Serpentina",
   "Serpentina",
   "./asses/pinteres12.jpg",
-  "./asses/pinteres12.jpg",
-  80,
-  120
-  // "aca tiene que ir la imagen de la cara del michipon"
+  "./asses/pinteres12.jpg"
 );
 let teddyEnemigo = new michipon(
-  "Teddy", 
+  "Teddy",
   "Teddy",
   "./asses/pinteres9.jpg",
-  "./asses/pinteres9.jpg",
-  150,
-  95
-  // "aca tiene que ir la imagen de la cara del michipon"
-  );
+  "./asses/pinteres9.jpg"
+);
 let kiraEnemigo = new michipon(
-  "Kira", 
-  "Kira", 
+  "Kira",
+  "Kira",
   "./asses/pinteres6.jpg",
-  "./asses/pinteres6.jpg",
-  200,
-  190,
-
-  // "aca tiene que ir la imagen de la cara del michipon"
-  );
+  "./asses/pinteres6.jpg"
+);
 let amigodelhombreEnemigo = new michipon(
   "Amigo del Hombre",
   "Amigodelhombre",
   "./asses/pinteres13.jpg",
-  "./asses/pinteres13.jpg",
-  300,
-  200
-  // "aca tiene que ir la imagen de la cara del michipon"
+  "./asses/pinteres13.jpg"
 );
 let tiguronsinEnemigo = new michipon(
   "Tiguronsin",
   "Tiguronsin",
   "./asses/pinteres8.jpg",
-  "./asses/pinteres8.jpg",
-
-  // "aca tiene que ir la imagen de la cara del michipon"
-
+  "./asses/pinteres8.jpg"
 );
 let ardillitaEnemigo = new michipon(
   "Ardillita",
   "Ardillita",
   "./asses/ardillitamichipon.jpg",
-  "./asses/ardillitamichipon.jpg",
-  // "aca tiene que ir la imagen de la cara del michipon"
-
+  "./asses/ardillitamichipon.jpg"
 );
-
 
 // la sig expresion sirve para agregar ataques a nuestros mokepones que viven dentro de una classe
 serpentina.ataques.push(
-  { nombre: "💧", id: "boton-agua" },
-  { nombre: "💧", id: "boton-agua" },
-  { nombre: "💧", id: "boton-agua" },
-  { nombre: "🌱", id: "boton-tierra" },
-  { nombre: "🔥", id: "boton-fuego" }
+  { nombre: "🐍", id: "boton-serpiente" },
+  { nombre: "🐍", id: "boton-serpiente" },
+  { nombre: "🐍", id: "boton-serpiente" },
+  { nombre: "☠️", id: "boton-veneno" },
+  { nombre: "🦷", id: "boton-mordida" }
 );
 teddy.ataques.push(
-  { nombre: "🔥", id: "boton-fuego" },
-  { nombre: "🔥", id: "boton-fuego" },
-  { nombre: "🔥", id: "boton-fuego" },
-  { nombre: "💧", id: "boton-agua" },
-  { nombre: "🌱", id: "boton-tierra" }
+  { nombre: "🦁", id: "boton-leon" },
+  { nombre: "🦁", id: "boton-leon" },
+  { nombre: "🦁", id: "boton-leon" },
+  { nombre: "🦷", id: "boton-mordida" },
+  { nombre: "🦷", id: "boton-mordida" }
 );
 kira.ataques.push(
-  { nombre: "🌱", id: "boton-tierra" },
-  { nombre: "🌱", id: "boton-tierra" },
-  { nombre: "🌱", id: "boton-tierra" },
-  { nombre: "💧", id: "boton-agua" },
-  { nombre: "🔥", id: "boton-fuego" }
+  { nombre: "😾", id: "boton-gato" },
+  { nombre: "😾", id: "boton-gato" },
+  { nombre: "😾", id: "boton-gato" },
+  { nombre: "🦷", id: "boton-mordida" },
+  { nombre: "🦷", id: "boton-mordida" }
 );
 amigodelhombre.ataques.push(
-  { nombre: "🔥", id: "boton-fuego" },
-  { nombre: "🔥", id: "boton-fuego" },
-  { nombre: "💧", id: "boton-agua" },
+  { nombre: "🦉", id: "boton-buo" },
+  { nombre: "🦉", id: "boton-buo" },
+  { nombre: "🦉", id: "boton-buo" },
   { nombre: "💧", id: "boton-agua" },
   { nombre: "🌱", id: "boton-tierra" }
 );
 tiguronsin.ataques.push(
-  { nombre: "🌱", id: "boton-tierra" },
-  { nombre: "🌱", id: "boton-tierra" },
-  { nombre: "💧", id: "boton-agua" },
-  { nombre: "💧", id: "boton-agua" },
-  { nombre: "🔥", id: "boton-fuego" }
+  { nombre: "🔥", id: "boton-fuego" },
+  { nombre: "🔥", id: "boton-fuego" },
+  { nombre: "🐉", id: "boton-dragon" },
+  { nombre: "🐉", id: "boton-dragon" },
+  { nombre: "🐉", id: "boton-dragon" }
 );
 ardillita.ataques.push(
+  { nombre: "🐿️", id: "boton-ardilla" },
+  { nombre: "🐿️", id: "boton-ardilla" },
+  { nombre: "🐿️", id: "boton-ardilla" },
+  { nombre: "🌱", id: "boton-tierra" },
+  { nombre: "🌱", id: "boton-tierra" }
+);
+
+serpentinaEnemigo.ataques.push(
+  { nombre: "🐍", id: "boton-serpiente" },
+  { nombre: "🐍", id: "boton-serpiente" },
+  { nombre: "🐍", id: "boton-serpiente" },
+  { nombre: "☠️", id: "boton-veneno" },
+  { nombre: "🦷", id: "boton-mordida" }
+);
+teddyEnemigo.ataques.push(
+  { nombre: "🦁", id: "boton-leon" },
+  { nombre: "🦁", id: "boton-leon" },
+  { nombre: "🦁", id: "boton-leon" },
+  { nombre: "🦷", id: "boton-mordida" },
+  { nombre: "🦷", id: "boton-mordida" }
+);
+kiraEnemigo.ataques.push(
+  { nombre: "😾", id: "boton-gato" },
+  { nombre: "😾", id: "boton-gato" },
+  { nombre: "😾", id: "boton-gato" },
+  { nombre: "🦷", id: "boton-mordida" },
+  { nombre: "🦷", id: "boton-mordida" }
+);
+amigodelhombreEnemigo.ataques.push(
+  { nombre: "🦉", id: "boton-buo" },
+  { nombre: "🦉", id: "boton-buo" },
+  { nombre: "🦉", id: "boton-buo" },
   { nombre: "💧", id: "boton-agua" },
-  { nombre: "💧", id: "boton-agua" },
+  { nombre: "🌱", id: "boton-tierra" }
+);
+tiguronsinEnemigo.ataques.push(
   { nombre: "🔥", id: "boton-fuego" },
   { nombre: "🔥", id: "boton-fuego" },
+  { nombre: "🐉", id: "boton-dragon" },
+  { nombre: "🐉", id: "boton-dragon" },
+  { nombre: "🐉", id: "boton-dragon" }
+);
+ardillitaEnemigo.ataques.push(
+  { nombre: "🐿️", id: "boton-ardilla" },
+  { nombre: "🐿️", id: "boton-ardilla" },
+  { nombre: "🐿️", id: "boton-ardilla" },
+  { nombre: "🌱", id: "boton-tierra" },
   { nombre: "🌱", id: "boton-tierra" }
 );
 
 // con la funcion de abajo, empujo los mokepones dentro de un array que cree antes
 michipones.push(serpentina, teddy, kira, amigodelhombre, tiguronsin, ardillita);
 
+function aleatorio(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
 function iniciarjuego() {
+  sectionVerMapa.style.display = "none";
   sectionSeleccionarAtaque.style.display = "none";
-  sectionVerMapa.style.display = 'none'
-
-
 
   // este metodo nos ayuda a iterar o recorrer cada uno de nuestros objetos dentro de nuestro array "para cada elemento dentro del arrray, generame esto en el html"
   michipones.forEach((michipon) => {
@@ -274,15 +293,8 @@ function iniciarjuego() {
   botonReiniciar.addEventListener("click", reiniciarJuego);
 }
 
-function aleatorio(min, max) {
-  return Math.floor(Math.random() * (max - min + 1) + min);
-}
-
 function seleccionarMascotaJugador() {
   sectionSeleccionarMascota.style.display = "none";
-  // sectionSeleccionarAtaque.style.display = "flex";
-  sectionVerMapa.style.display = "flex"
-  
   
   if (inputSerpentina.checked) {
     spanMascotaJugador.innerHTML = inputSerpentina.id;
@@ -306,11 +318,11 @@ function seleccionarMascotaJugador() {
     alert("tienes que seleccionar una opcion");
   }
   extraerAtaques(mascotaJugador);
-  seleccionarMascotaEnemigo();
-  iniciarMapa()
+  sectionVerMapa.style.display = "flex";
+  iniciarMapa();
 }
 
-function extraerAtaques() {
+function extraerAtaques(mascotaJugador) {
   let ataques;
   for (let i = 0; i < michipones.length; i++) {
     if (mascotaJugador === michipones[i].id) {
@@ -329,43 +341,68 @@ function mostrarAtaques(ataques) {
   botonAgua = document.getElementById("boton-agua");
   botonFuego = document.getElementById("boton-fuego");
   botonTierra = document.getElementById("boton-tierra");
-  botones = document.querySelectorAll(".BAtaque");  
+  botones = document.querySelectorAll(".BAtaque");
+  botonSerpiente = document.getElementById("boton-serpiente");
+  botonVeneno = document.getElementById("boton-veneno");
+  botonMordida = document.getElementById("boton-mordida");
+  botonGato = document.getElementById("boton-gato");
+  botonLeon = document.getElementById("boton-leon");
+  botonBuo = document.getElementById("boton-buo");
+  botonDragon = document.getElementById("boton-dragon");
+  botonArdilla = document.getElementById("boton-ardilla");
+
 }
-
-// function mostrarImgMascotas(){
-//   imagenJugadorElegido = `<img src="${michipon.foto}" alt="${michipon.nombre}">`
-//   imagenEnemigoElegido = `<img src="${michipon.foto}" alt="${michipon.nombre}">`
-
-//   imgMichiponJugador.innerHTML = imagenJugadorElegido
-//   imgMichiponEnemigo.innerHTML = imagenEnemigoElegido
-
-// }
 
 function secuenciaAtaque() {
   botones.forEach((boton) => {
     boton.addEventListener("click", (e) => {
       if (e.target.textContent === "🔥") {
         ataqueJugador.push("FUEGO");
-        console.log(ataqueJugador);
         boton.disabled = true;
-        boton.style.background = "#112F58";
+        boton.style.background = "#FFCAC8";
       } else if (e.target.textContent === "🌱") {
         ataqueJugador.push("TIERRA");
-        console.log(ataqueJugador);
         boton.disabled = true;
-        boton.style.background = "#112F58";
+        boton.style.background = "#FFCAC8";
+      } else if (e.target.textContent === "🦉") {
+        ataqueJugador.push("BUU");
+        boton.disabled = true;
+        boton.style.background = "#FFCAC8";
+      } else if (e.target.textContent === "🦷") {
+        ataqueJugador.push("MORDIDA");
+        boton.disabled = true;
+        boton.style.background = "#FFCAC8";
+      } else if (e.target.textContent === "😼") {
+        ataqueJugador.push("ZARPAZO");
+        boton.disabled = true;
+        boton.style.background = "#FFCAC8";
+      } else if (e.target.textContent === "☠️") {
+        ataqueJugador.push("VENENO");
+        boton.disabled = true;
+        boton.style.background = "#FFCAC8";
+      } else if (e.target.textContent === "🐍") {
+        ataqueJugador.push("SERPIENTE");
+        boton.disabled = true;
+        boton.style.background = "#FFCAC8";
+      } else if (e.target.textContent === "🐉") {
+        ataqueJugador.push("DRAGON");
+        boton.disabled = true;
+        boton.style.background = "#FFCAC8";
+      } else if (e.target.textContent === "🐿️") {
+        ataqueJugador.push("ARDILLA");
+        boton.disabled = true;
+        boton.style.background = "#FFCAC8";
       } else {
         ataqueJugador.push("AGUA");
-        console.log(ataqueJugador);
         boton.disabled = true;
-        boton.style.background = "#112F58";
+        boton.style.background = "#FFCAC8";
       }
       funcionAtaqueEnemigo();
     });
   });
 }
 
-function seleccionarMascotaEnemigo() {
+function seleccionarMascotaEnemigo(enemigo) {
   let mascotaleatoria = aleatorio(0, michipones.length - 1);
   spanMascotaEnemigo.innerHTML = michipones[mascotaleatoria].nombre;
   ataqueMichiponEnemigo = michipones[mascotaleatoria].nombre;
@@ -425,6 +462,94 @@ function combate() {
       crearMensajes("GANASTE");
       victoriasJugador++;
       spanVictoriasJugador.innerHTML = victoriasJugador;
+    } else if (
+      ataqueJugador[index] === "SERPIENTE" &&
+      ataqueEnemigo[index] === "TIERRA"
+    ) {
+      indexAmbosOponentes(index, index);
+      crearMensajes("GANASTE");
+      victoriasJugador++;
+      spanVictoriasJugador.innerHTML = victoriasJugador;
+    } else if (
+      ataqueJugador[index] === "SERPIENTE" &&
+      ataqueEnemigo[index] === "TIERRA"
+    ) {
+      indexAmbosOponentes(index, index);
+      crearMensajes("GANASTE");
+      victoriasJugador++;
+      spanVictoriasJugador.innerHTML = victoriasJugador;
+    } else if (
+      ataqueJugador[index] === "SERPIENTE" &&
+      ataqueEnemigo[index] === "AGUA"
+    ) {
+      indexAmbosOponentes(index, index);
+      crearMensajes("GANASTE");
+      victoriasJugador++;
+      spanVictoriasJugador.innerHTML = victoriasJugador;
+    } else if (
+      ataqueJugador[index] === "VENENO" &&
+      ataqueEnemigo[index] === "LEON"
+    ) {
+      indexAmbosOponentes(index, index);
+      crearMensajes("GANASTE");
+      victoriasJugador++;
+      spanVictoriasJugador.innerHTML = victoriasJugador;
+    } else if (
+      ataqueJugador[index] === "GATO" &&
+      ataqueEnemigo[index] === "SERPIENTE"
+    ) {
+      indexAmbosOponentes(index, index);
+      crearMensajes("GANASTE");
+      victoriasJugador++;
+      spanVictoriasJugador.innerHTML = victoriasJugador;
+    } else if (
+      ataqueJugador[index] === "GATO" &&
+      ataqueEnemigo[index] === "MORDIDA"
+    ) {
+      indexAmbosOponentes(index, index);
+      crearMensajes("GANASTE");
+      victoriasJugador++;
+      spanVictoriasJugador.innerHTML = victoriasJugador;
+    } else if (
+      ataqueJugador[index] === "SERPIENTE" &&
+      ataqueEnemigo[index] === "BUO"
+    ) {
+      indexAmbosOponentes(index, index);
+      crearMensajes("GANASTE");
+      victoriasJugador++;
+      spanVictoriasJugador.innerHTML = victoriasJugador;
+    } else if (
+      ataqueJugador[index] === "LEON" &&
+      ataqueEnemigo[index] === "GATO"
+    ) {
+      indexAmbosOponentes(index, index);
+      crearMensajes("GANASTE");
+      victoriasJugador++;
+      spanVictoriasJugador.innerHTML = victoriasJugador;
+    } else if (
+      ataqueJugador[index] === "LEON" &&
+      ataqueEnemigo[index] === "GATO"
+    ) {
+      indexAmbosOponentes(index, index);
+      crearMensajes("GANASTE");
+      victoriasJugador++;
+      spanVictoriasJugador.innerHTML = victoriasJugador;
+    } else if (
+      ataqueJugador[index] === "LEON" &&
+      ataqueEnemigo[index] === "GATO"
+    ) {
+      indexAmbosOponentes(index, index);
+      crearMensajes("GANASTE");
+      victoriasJugador++;
+      spanVictoriasJugador.innerHTML = victoriasJugador;
+    } else if (
+      ataqueJugador[index] === "LEON" &&
+      ataqueEnemigo[index] === "GATO"
+    ) {
+      indexAmbosOponentes(index, index);
+      crearMensajes("GANASTE");
+      victoriasJugador++;
+      spanVictoriasJugador.innerHTML = victoriasJugador;
     } else {
       indexAmbosOponentes(index, index);
       crearMensajes("PERDISTE");
@@ -463,76 +588,111 @@ function reiniciarJuego() {
   location.reload();
 }
 
-function pintarCanvas(){
-  mascotaJugadorObjeto.x = mascotaJugadorObjeto.x + mascotaJugadorObjeto.velocidadX
-  mascotaJugadorObjeto.y = mascotaJugadorObjeto.y + mascotaJugadorObjeto.velocidadY
-    lienzo.clearRect(0, 0, mapa.width, mapa.height)
-    lienzo.drawImage(
-        mapaBackground,
-        0,
-        0,
-        mapa.width,
-        mapa.height
-    )
-  mascotaJugadorObjeto.pintarMichiponCanvas()
-  serpentinaEnemigo.pintarMichiponCanvas()
-  teddyEnemigo.pintarMichiponCanvas()
-  kiraEnemigo.pintarMichiponCanvas()
+function pintarCanvas() {
+  mascotaJugadorObjeto.x =
+    mascotaJugadorObjeto.x + mascotaJugadorObjeto.velocidadX;
+  mascotaJugadorObjeto.y =
+    mascotaJugadorObjeto.y + mascotaJugadorObjeto.velocidadY;
+  lienzo.clearRect(0, 0, mapa.width, mapa.height);
+  lienzo.drawImage(mapaBackground, 0, 0, mapa.width, mapa.height);
+  mascotaJugadorObjeto.pintarMichiponCanvas();
+  serpentinaEnemigo.pintarMichiponCanvas();
+  teddyEnemigo.pintarMichiponCanvas();
+  kiraEnemigo.pintarMichiponCanvas();
+  amigodelhombreEnemigo.pintarMichiponCanvas();
+  tiguronsinEnemigo.pintarMichiponCanvas();
+  ardillitaEnemigo.pintarMichiponCanvas();
+
+  if (
+    mascotaJugadorObjeto.velocidadX !== 0 ||
+    mascotaJugadorObjeto.velocidadY !== 0
+  ) {
+    revisarColision(serpentinaEnemigo);
+    revisarColision(teddyEnemigo);
+    revisarColision(kiraEnemigo);
+    revisarColision(amigodelhombreEnemigo);
+    revisarColision(tiguronsinEnemigo);
+    revisarColision(ardillitaEnemigo);
+  }
 }
 
-function moverDerecha(){
-  mascotaJugadorObjeto.velocidadX = 5
+function moverDerecha() {
+  mascotaJugadorObjeto.velocidadX = 5;
 }
-function moverIzquierda(){
-  mascotaJugadorObjeto.velocidadX = -5
+function moverIzquierda() {
+  mascotaJugadorObjeto.velocidadX = -5;
 }
-function moverArriba(){
-  mascotaJugadorObjeto.velocidadY = -5
+function moverArriba() {
+  mascotaJugadorObjeto.velocidadY = -5;
 }
-function moverAbajo(){
-  mascotaJugadorObjeto.velocidadY = 5
-}
-
-function detenerMovimiento(){
-  mascotaJugadorObjeto.velocidadX = 0
-  mascotaJugadorObjeto.velocidadY = 0
+function moverAbajo() {
+  mascotaJugadorObjeto.velocidadY = 5;
 }
 
-function sePresionoUnaTecla(event){
+function detenerMovimiento() {
+  mascotaJugadorObjeto.velocidadX = 0;
+  mascotaJugadorObjeto.velocidadY = 0;
+}
+
+function sePresionoUnaTecla(event) {
   switch (event.key) {
-    case 'ArrowUp':
-        moverArriba()
-        break
-    case 'ArrowDown':
-        moverAbajo()
-        break
-    case 'ArrowLeft':
-        moverIzquierda()
-        break
-    case 'ArrowRight':
-        moverDerecha()
-        break
+    case "ArrowUp":
+      moverArriba();
+      break;
+    case "ArrowDown":
+      moverAbajo();
+      break;
+    case "ArrowLeft":
+      moverIzquierda();
+      break;
+    case "ArrowRight":
+      moverDerecha();
+      break;
     default:
-        break
-}
+      break;
+  }
 }
 // http://127.0.0.1:5500/
 function iniciarMapa() {
-  mapa.width = 800
-  mapa.height = 500
-  mascotaJugadorObjeto = obtenerObjetoMascota(mascotaJugador)
-  intervalo = setInterval(pintarCanvas, 50)
-  
-  window.addEventListener('keydown', sePresionoUnaTecla)
+  mascotaJugadorObjeto = obtenerObjetoMascota(mascotaJugador);
+  intervalo = setInterval(pintarCanvas, 50);
 
-  window.addEventListener('keyup', detenerMovimiento)
+  window.addEventListener("keydown", sePresionoUnaTecla);
+
+  window.addEventListener("keyup", detenerMovimiento);
 }
 
 function obtenerObjetoMascota() {
   for (let i = 0; i < michipones.length; i++) {
-      if (mascotaJugador === michipones[i].id) {
-          return michipones[i]
-      }
+    if (mascotaJugador === michipones[i].id) {
+      return michipones[i];
+    }
   }
 }
+
+function revisarColision(enemigo) {
+  const arribaEnemigo = enemigo.y;
+  const abajoEnemigo = enemigo.y + enemigo.alto;
+  const derechaEnemigo = enemigo.x + enemigo.ancho;
+  const izquierdaEnemigo = enemigo.x;
+  const arribaMascota = mascotaJugadorObjeto.y;
+  const abajoMascota = mascotaJugadorObjeto.y + mascotaJugadorObjeto.alto;
+  const derechaMascota = mascotaJugadorObjeto.x + mascotaJugadorObjeto.ancho;
+  const izquierdaMascota = mascotaJugadorObjeto.x;
+  if (
+    abajoMascota < arribaEnemigo ||
+    arribaMascota > abajoEnemigo ||
+    derechaMascota < izquierdaEnemigo ||
+    izquierdaMascota > derechaEnemigo
+  ) {
+    return;
+  }
+  detenerMovimiento();
+  clearInterval(intervalo);
+  console.log("se detecto una colision");
+  sectionSeleccionarAtaque.style.display = "flex";
+  sectionVerMapa.style.display = "none";
+  seleccionarMascotaEnemigo(enemigo);
+}
+
 window.addEventListener("load", iniciarjuego);
