@@ -35,8 +35,8 @@ let imagenJugadorElegido;
 let imagenEnemigoElegido;
 let mascotaJugadorObjeto;
 let michipones = [];
-let opcionDeMichipones;
 let ataqueEnemigo = [];
+let opcionDeMichipones;
 let ataqueMichipon;
 let ataqueMichiponEnemigo;
 let inputSerpentina;
@@ -78,13 +78,13 @@ mapa.width = anchoDelMapa;
 mapa.height = alturaQueBuscamos;
 
 class michipon {
-  constructor(nombre, id, foto, mapaFoto) {
+  constructor(nombre, id, foto, mapaFoto, x = 30, y = 30) {
     this.nombre = nombre;
     this.id = id;
     this.foto = foto;
     this.ataques = [];
-    this.x = aleatorio(0, mapa.width - this.ancho);
-    this.y = aleatorio(0, mapa.height - this.alto);
+    this.x = x;
+    this.y = y;
     this.ancho = 60;
     this.alto = 120;
     this.mapaFoto = new Image();
@@ -102,7 +102,7 @@ let serpentina = new michipon(
   "Serpentina",
   "Serpentina",
   "./asses/pinteres12.jpg",
-  "./asses/pinteres12.jpg"
+  "./asses/pinteres12.jpg",
 );
 let teddy = new michipon(
   "Teddy",
@@ -138,37 +138,50 @@ let serpentinaEnemigo = new michipon(
   "Serpentina",
   "Serpentina",
   "./asses/pinteres12.jpg",
-  "./asses/pinteres12.jpg"
+  "./asses/pinteres12.jpg",
+  150,
+  300
 );
 let teddyEnemigo = new michipon(
   "Teddy",
   "Teddy",
   "./asses/pinteres9.jpg",
-  "./asses/pinteres9.jpg"
+  "./asses/pinteres9.jpg",
+  500,
+  400
 );
 let kiraEnemigo = new michipon(
   "Kira",
   "Kira",
   "./asses/pinteres6.jpg",
-  "./asses/pinteres6.jpg"
+  "./asses/pinteres6.jpg",
+  340,
+  120
 );
 let amigodelhombreEnemigo = new michipon(
   "Amigo del Hombre",
   "Amigodelhombre",
   "./asses/pinteres13.jpg",
-  "./asses/pinteres13.jpg"
+  "./asses/pinteres13.jpg",
+  600,
+  60
 );
 let tiguronsinEnemigo = new michipon(
   "Tiguronsin",
   "Tiguronsin",
   "./asses/pinteres8.jpg",
-  "./asses/pinteres8.jpg"
+  "./asses/pinteres8.jpg",
+  710,
+  180
 );
 let ardillitaEnemigo = new michipon(
   "Ardillita",
   "Ardillita",
   "./asses/ardillitamichipon.jpg",
-  "./asses/ardillitamichipon.jpg"
+  "./asses/ardillitamichipon.jpg",
+  200,
+  40,
+
 );
 
 // la sig expresion sirve para agregar ataques a nuestros mokepones que viven dentro de una classe
@@ -266,8 +279,8 @@ function aleatorio(min, max) {
 }
 
 function iniciarjuego() {
-  sectionVerMapa.style.display = "none";
   sectionSeleccionarAtaque.style.display = "none";
+  sectionVerMapa.style.display = "none";
 
   // este metodo nos ayuda a iterar o recorrer cada uno de nuestros objetos dentro de nuestro array "para cada elemento dentro del arrray, generame esto en el html"
   michipones.forEach((michipon) => {
@@ -289,7 +302,6 @@ function iniciarjuego() {
 
   sectionReinicio.style.display = "none";
   botonMascotaJugador.addEventListener("click", seleccionarMascotaJugador);
-
   botonReiniciar.addEventListener("click", reiniciarJuego);
 }
 
@@ -403,10 +415,10 @@ function secuenciaAtaque() {
 }
 
 function seleccionarMascotaEnemigo(enemigo) {
-  let mascotaleatoria = aleatorio(0, michipones.length - 1);
-  spanMascotaEnemigo.innerHTML = michipones[mascotaleatoria].nombre;
-  ataqueMichiponEnemigo = michipones[mascotaleatoria].nombre;
-  secuenciaAtaque();
+  spanMascotaEnemigo.innerHTML = enemigo.nombre
+  ataqueMichiponEnemigo = enemigo.ataques
+  secuenciaAtaque()
+  
 }
 
 function funcionAtaqueEnemigo() {
@@ -462,102 +474,14 @@ function combate() {
       crearMensajes("GANASTE");
       victoriasJugador++;
       spanVictoriasJugador.innerHTML = victoriasJugador;
-    } else if (
-      ataqueJugador[index] === "SERPIENTE" &&
-      ataqueEnemigo[index] === "TIERRA"
-    ) {
-      indexAmbosOponentes(index, index);
-      crearMensajes("GANASTE");
-      victoriasJugador++;
-      spanVictoriasJugador.innerHTML = victoriasJugador;
-    } else if (
-      ataqueJugador[index] === "SERPIENTE" &&
-      ataqueEnemigo[index] === "TIERRA"
-    ) {
-      indexAmbosOponentes(index, index);
-      crearMensajes("GANASTE");
-      victoriasJugador++;
-      spanVictoriasJugador.innerHTML = victoriasJugador;
-    } else if (
-      ataqueJugador[index] === "SERPIENTE" &&
-      ataqueEnemigo[index] === "AGUA"
-    ) {
-      indexAmbosOponentes(index, index);
-      crearMensajes("GANASTE");
-      victoriasJugador++;
-      spanVictoriasJugador.innerHTML = victoriasJugador;
-    } else if (
-      ataqueJugador[index] === "VENENO" &&
-      ataqueEnemigo[index] === "LEON"
-    ) {
-      indexAmbosOponentes(index, index);
-      crearMensajes("GANASTE");
-      victoriasJugador++;
-      spanVictoriasJugador.innerHTML = victoriasJugador;
-    } else if (
-      ataqueJugador[index] === "GATO" &&
-      ataqueEnemigo[index] === "SERPIENTE"
-    ) {
-      indexAmbosOponentes(index, index);
-      crearMensajes("GANASTE");
-      victoriasJugador++;
-      spanVictoriasJugador.innerHTML = victoriasJugador;
-    } else if (
-      ataqueJugador[index] === "GATO" &&
-      ataqueEnemigo[index] === "MORDIDA"
-    ) {
-      indexAmbosOponentes(index, index);
-      crearMensajes("GANASTE");
-      victoriasJugador++;
-      spanVictoriasJugador.innerHTML = victoriasJugador;
-    } else if (
-      ataqueJugador[index] === "SERPIENTE" &&
-      ataqueEnemigo[index] === "BUO"
-    ) {
-      indexAmbosOponentes(index, index);
-      crearMensajes("GANASTE");
-      victoriasJugador++;
-      spanVictoriasJugador.innerHTML = victoriasJugador;
-    } else if (
-      ataqueJugador[index] === "LEON" &&
-      ataqueEnemigo[index] === "GATO"
-    ) {
-      indexAmbosOponentes(index, index);
-      crearMensajes("GANASTE");
-      victoriasJugador++;
-      spanVictoriasJugador.innerHTML = victoriasJugador;
-    } else if (
-      ataqueJugador[index] === "LEON" &&
-      ataqueEnemigo[index] === "GATO"
-    ) {
-      indexAmbosOponentes(index, index);
-      crearMensajes("GANASTE");
-      victoriasJugador++;
-      spanVictoriasJugador.innerHTML = victoriasJugador;
-    } else if (
-      ataqueJugador[index] === "LEON" &&
-      ataqueEnemigo[index] === "GATO"
-    ) {
-      indexAmbosOponentes(index, index);
-      crearMensajes("GANASTE");
-      victoriasJugador++;
-      spanVictoriasJugador.innerHTML = victoriasJugador;
-    } else if (
-      ataqueJugador[index] === "LEON" &&
-      ataqueEnemigo[index] === "GATO"
-    ) {
-      indexAmbosOponentes(index, index);
-      crearMensajes("GANASTE");
-      victoriasJugador++;
-      spanVictoriasJugador.innerHTML = victoriasJugador;
-    } else {
+    }  else {
       indexAmbosOponentes(index, index);
       crearMensajes("PERDISTE");
       victoriasEnemigo++;
       spanVictoriasEnemigo.innerHTML = victoriasEnemigo;
     }
-    revisarVictorias();
   }
+  revisarVictorias();
 }
 function revisarVictorias() {
   if (victoriasEnemigo == victoriasJugador) {
@@ -589,12 +513,15 @@ function reiniciarJuego() {
 }
 
 function pintarCanvas() {
-  mascotaJugadorObjeto.x =
-    mascotaJugadorObjeto.x + mascotaJugadorObjeto.velocidadX;
-  mascotaJugadorObjeto.y =
-    mascotaJugadorObjeto.y + mascotaJugadorObjeto.velocidadY;
+  mascotaJugadorObjeto.x = mascotaJugadorObjeto.x + mascotaJugadorObjeto.velocidadX;
+  mascotaJugadorObjeto.y = mascotaJugadorObjeto.y + mascotaJugadorObjeto.velocidadY;
   lienzo.clearRect(0, 0, mapa.width, mapa.height);
-  lienzo.drawImage(mapaBackground, 0, 0, mapa.width, mapa.height);
+  lienzo.drawImage(
+    mapaBackground, 
+    0, 
+    0, 
+    mapa.width,
+    mapa.height);
   mascotaJugadorObjeto.pintarMichiponCanvas();
   serpentinaEnemigo.pintarMichiponCanvas();
   teddyEnemigo.pintarMichiponCanvas();
@@ -655,6 +582,7 @@ function sePresionoUnaTecla(event) {
 // http://127.0.0.1:5500/
 function iniciarMapa() {
   mascotaJugadorObjeto = obtenerObjetoMascota(mascotaJugador);
+  console.log(mascotaJugadorObjeto, mascotaJugador);
   intervalo = setInterval(pintarCanvas, 50);
 
   window.addEventListener("keydown", sePresionoUnaTecla);
