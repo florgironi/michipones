@@ -52,14 +52,6 @@ let botonAgua;
 let botonFuego;
 let botonTierra;
 let botones = [];
-let botonSerpiente;
-let botonVeneno;
-let botonMordida;
-let botonGato;
-let botonLeon;
-let botonBuo;
-let botonDragon;
-let botonArdilla;
 let ataqueJugador = [];
 let victoriasEnemigo = 0;
 let victoriasJugador = 0;
@@ -186,88 +178,88 @@ let ardillitaEnemigo = new michipon(
 
 // la sig expresion sirve para agregar ataques a nuestros mokepones que viven dentro de una classe
 serpentina.ataques.push(
-  { nombre: "🐍", id: "boton-serpiente" },
-  { nombre: "🐍", id: "boton-serpiente" },
-  { nombre: "🐍", id: "boton-serpiente" },
-  { nombre: "☠️", id: "boton-veneno" },
-  { nombre: "🦷", id: "boton-mordida" }
+  { nombre: "💧", id: "boton-agua" },
+  { nombre: "💧", id: "boton-agua" },
+  { nombre: "💧", id: "boton-agua" },
+  { nombre: "🌱", id: "boton-tierra" },
+  { nombre: "🔥", id: "boton-fuego" }
 );
 teddy.ataques.push(
-  { nombre: "🦁", id: "boton-leon" },
-  { nombre: "🦁", id: "boton-leon" },
-  { nombre: "🦁", id: "boton-leon" },
-  { nombre: "🦷", id: "boton-mordida" },
-  { nombre: "🦷", id: "boton-mordida" }
+  { nombre: "🔥", id: "boton-fuego" },
+  { nombre: "🔥", id: "boton-fuego" },
+  { nombre: "🔥", id: "boton-fuego" },
+  { nombre: "💧", id: "boton-agua" },
+  { nombre: "🌱", id: "boton-tierra" }
 );
 kira.ataques.push(
-  { nombre: "😾", id: "boton-gato" },
-  { nombre: "😾", id: "boton-gato" },
-  { nombre: "😾", id: "boton-gato" },
-  { nombre: "🦷", id: "boton-mordida" },
-  { nombre: "🦷", id: "boton-mordida" }
+  { nombre: "🌱", id: "boton-tierra" },
+  { nombre: "🌱", id: "boton-tierra" },
+  { nombre: "🌱", id: "boton-tierra" },
+  { nombre: "💧", id: "boton-agua" },
+  { nombre: "🔥", id: "boton-fuego" }
 );
 amigodelhombre.ataques.push(
-  { nombre: "🦉", id: "boton-buo" },
-  { nombre: "🦉", id: "boton-buo" },
-  { nombre: "🦉", id: "boton-buo" },
+  { nombre: "🔥", id: "boton-fuego" },
+  { nombre: "🔥", id: "boton-fuego" },
+  { nombre: "💧", id: "boton-agua" },
   { nombre: "💧", id: "boton-agua" },
   { nombre: "🌱", id: "boton-tierra" }
 );
 tiguronsin.ataques.push(
-  { nombre: "🔥", id: "boton-fuego" },
-  { nombre: "🔥", id: "boton-fuego" },
-  { nombre: "🐉", id: "boton-dragon" },
-  { nombre: "🐉", id: "boton-dragon" },
-  { nombre: "🐉", id: "boton-dragon" }
+  { nombre: "🌱", id: "boton-tierra" },
+  { nombre: "🌱", id: "boton-tierra" },
+  { nombre: "💧", id: "boton-agua" },
+  { nombre: "💧", id: "boton-agua" },
+  { nombre: "🔥", id: "boton-fuego" }
 );
 ardillita.ataques.push(
-  { nombre: "🐿️", id: "boton-ardilla" },
-  { nombre: "🐿️", id: "boton-ardilla" },
-  { nombre: "🐿️", id: "boton-ardilla" },
-  { nombre: "🌱", id: "boton-tierra" },
+  { nombre: "💧", id: "boton-agua" },
+  { nombre: "💧", id: "boton-agua" },
+  { nombre: "🔥", id: "boton-fuego" },
+  { nombre: "🔥", id: "boton-fuego" },
   { nombre: "🌱", id: "boton-tierra" }
 );
 
 serpentinaEnemigo.ataques.push(
-  { nombre: "🐍", id: "boton-serpiente" },
-  { nombre: "🐍", id: "boton-serpiente" },
-  { nombre: "🐍", id: "boton-serpiente" },
-  { nombre: "☠️", id: "boton-veneno" },
-  { nombre: "🦷", id: "boton-mordida" }
+  { nombre: "💧", id: "boton-agua" },
+  { nombre: "💧", id: "boton-agua" },
+  { nombre: "💧", id: "boton-agua" },
+  { nombre: "🌱", id: "boton-tierra" },
+  { nombre: "🔥", id: "boton-fuego" }
 );
 teddyEnemigo.ataques.push(
-  { nombre: "🦁", id: "boton-leon" },
-  { nombre: "🦁", id: "boton-leon" },
-  { nombre: "🦁", id: "boton-leon" },
-  { nombre: "🦷", id: "boton-mordida" },
-  { nombre: "🦷", id: "boton-mordida" }
+  { nombre: "🔥", id: "boton-fuego" },
+  { nombre: "🔥", id: "boton-fuego" },
+  { nombre: "🔥", id: "boton-fuego" },
+  { nombre: "💧", id: "boton-agua" },
+  { nombre: "🌱", id: "boton-tierra" }
 );
 kiraEnemigo.ataques.push(
-  { nombre: "😾", id: "boton-gato" },
-  { nombre: "😾", id: "boton-gato" },
-  { nombre: "😾", id: "boton-gato" },
-  { nombre: "🦷", id: "boton-mordida" },
-  { nombre: "🦷", id: "boton-mordida" }
+  { nombre: "🌱", id: "boton-tierra" },
+  { nombre: "🌱", id: "boton-tierra" },
+  { nombre: "🌱", id: "boton-tierra" },
+  { nombre: "💧", id: "boton-agua" },
+  { nombre: "🔥", id: "boton-fuego" }
 );
 amigodelhombreEnemigo.ataques.push(
-  { nombre: "🦉", id: "boton-buo" },
-  { nombre: "🦉", id: "boton-buo" },
-  { nombre: "🦉", id: "boton-buo" },
+  { nombre: "🔥", id: "boton-fuego" },
+  { nombre: "🔥", id: "boton-fuego" },
+  { nombre: "💧", id: "boton-agua" },
   { nombre: "💧", id: "boton-agua" },
   { nombre: "🌱", id: "boton-tierra" }
 );
 tiguronsinEnemigo.ataques.push(
-  { nombre: "🔥", id: "boton-fuego" },
-  { nombre: "🔥", id: "boton-fuego" },
-  { nombre: "🐉", id: "boton-dragon" },
-  { nombre: "🐉", id: "boton-dragon" },
-  { nombre: "🐉", id: "boton-dragon" }
+  { nombre: "🌱", id: "boton-tierra" },
+  { nombre: "🌱", id: "boton-tierra" },
+  { nombre: "💧", id: "boton-agua" },
+  { nombre: "💧", id: "boton-agua" },
+  { nombre: "🔥", id: "boton-fuego" }
 );
 ardillitaEnemigo.ataques.push(
-  { nombre: "🐿️", id: "boton-ardilla" },
-  { nombre: "🐿️", id: "boton-ardilla" },
-  { nombre: "🐿️", id: "boton-ardilla" },
-  { nombre: "🌱", id: "boton-tierra" },
+  { nombre: "💧", id: "boton-agua" },
+  { nombre: "💧", id: "boton-agua" },
+  { nombre: "🔥", id: "boton-fuego" },
+  { nombre: "🔥", id: "boton-fuego" },
   { nombre: "🌱", id: "boton-tierra" }
 );
 
@@ -354,14 +346,6 @@ function mostrarAtaques(ataques) {
   botonFuego = document.getElementById("boton-fuego");
   botonTierra = document.getElementById("boton-tierra");
   botones = document.querySelectorAll(".BAtaque");
-  botonSerpiente = document.getElementById("boton-serpiente");
-  botonVeneno = document.getElementById("boton-veneno");
-  botonMordida = document.getElementById("boton-mordida");
-  botonGato = document.getElementById("boton-gato");
-  botonLeon = document.getElementById("boton-leon");
-  botonBuo = document.getElementById("boton-buo");
-  botonDragon = document.getElementById("boton-dragon");
-  botonArdilla = document.getElementById("boton-ardilla");
 
 }
 
