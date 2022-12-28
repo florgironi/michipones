@@ -607,4 +607,16 @@ function revisarColision(enemigo) {
   seleccionarMascotaEnemigo(enemigo);
 }
 
+function UnirseAlJuego(){
+  fetch('http://localhost:8080/unirse')
+    .then(function (res) {
+      if(res.ok){
+        res.text()
+          .then(function(respuesta){
+            console.log({respuesta})
+        })
+    }
+  });
+}
+
 window.addEventListener("load", iniciarjuego);
