@@ -115,7 +115,7 @@ input:checked+label {
     margin-bottom: 2rem;
     align-items: center;
     font-size: 3rem;
-    height: 19rem;
+    height: 35rem;
     width: 53rem;
     padding: 5rem;
     border: solid black 2px;
@@ -164,6 +164,11 @@ img{
     margin: 0px;
 }
 
+#ataque-jugador , #ataque-enemigo{
+    font-size: 20px;
+}
+
+
 /* -------------------- RESPONSIVE ----------------------- */
 @media(max-width:425px){
     .cajaMascota{
@@ -199,7 +204,7 @@ img{
     /* SEGUNDA PANTALLA  */
     .envoltorio-tarjetas-mascotas{
     font-size: 1rem;
-    height: 72px;
+    height: 234px;
     width: 131px;
     justify-content: center;
     }
@@ -222,7 +227,9 @@ img{
     height: 2rem;
     width: 13rem;
     padding: 21px;
-    
+    }
+    #ataque-jugador , #ataque-enemigo, #resultado{
+        font-size: 12px;
     }
 
     
