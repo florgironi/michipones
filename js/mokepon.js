@@ -355,43 +355,15 @@ function secuenciaAtaque() {
       if (e.target.textContent === "🔥") {
         ataqueJugador.push("FUEGO");
         boton.disabled = true;
-        boton.style.background = "#FFCAC8";
+        boton.style.background = "#EEEEEE";
       } else if (e.target.textContent === "🌱") {
         ataqueJugador.push("TIERRA");
         boton.disabled = true;
-        boton.style.background = "#FFCAC8";
-      } else if (e.target.textContent === "🦉") {
-        ataqueJugador.push("BUU");
-        boton.disabled = true;
-        boton.style.background = "#FFCAC8";
-      } else if (e.target.textContent === "🦷") {
-        ataqueJugador.push("MORDIDA");
-        boton.disabled = true;
-        boton.style.background = "#FFCAC8";
-      } else if (e.target.textContent === "😼") {
-        ataqueJugador.push("ZARPAZO");
-        boton.disabled = true;
-        boton.style.background = "#FFCAC8";
-      } else if (e.target.textContent === "☠️") {
-        ataqueJugador.push("VENENO");
-        boton.disabled = true;
-        boton.style.background = "#FFCAC8";
-      } else if (e.target.textContent === "🐍") {
-        ataqueJugador.push("SERPIENTE");
-        boton.disabled = true;
-        boton.style.background = "#FFCAC8";
-      } else if (e.target.textContent === "🐉") {
-        ataqueJugador.push("DRAGON");
-        boton.disabled = true;
-        boton.style.background = "#FFCAC8";
-      } else if (e.target.textContent === "🐿️") {
-        ataqueJugador.push("ARDILLA");
-        boton.disabled = true;
-        boton.style.background = "#FFCAC8";
+        boton.style.background = "#EEEEEE";
       } else {
         ataqueJugador.push("AGUA");
         boton.disabled = true;
-        boton.style.background = "#FFCAC8";
+        boton.style.background = "#EEEEEE";
       }
       funcionAtaqueEnemigo();
     });
